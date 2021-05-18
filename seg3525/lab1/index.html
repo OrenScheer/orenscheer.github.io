@@ -3,17 +3,62 @@
 
 <head>
     <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Farro">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Average">
     <title>Mon Sondage</title>
 </head>
 
 <body>
     <div id="title-div">
-        <h1>Aimez-vous le site de la Bibliothèque d'Ottawa?</h1>
+        <h1>Utilisez-vous le site de la Bibliothèque d'Ottawa?</h1>
     </div>
-    <a href="http://www.biblioottawalibrary.ca" target="_blank">
-        <img src="images/biblio.png" alt="Bibliothèque d'Ottawa">
-    </a>
-    <p>Le <a href="http://www.biblioottawalibrary.ca" target="_blank">site web</a> de la bibliothèque.</p>
+    <div id="container">
+        <div id="left">
+            <a href="http://www.biblioottawalibrary.ca" target="_blank">
+                <img src="images/biblio.png" alt="Bibliothèque d'Ottawa">
+            </a>
+            <p>Le <a href="http://www.biblioottawalibrary.ca" target="_blank">site web</a> de la bibliothèque.</p>
+        </div>
+        <div id="right">
+            <form>
+                <label for="name"><strong>Votre nom est:</strong></label>
+                <input type="text" id="name" name="name"><br>
+
+                <label for="have-used"><strong>Vous avez déjà utilisé le site de la bibliothèque:</strong></label><br>
+                <input type="radio" id="yes" name="have-used" value="yes">
+                <label for="yes">Oui</label><br>
+                <input type="radio" id="no" name="have-used" value="no">
+                <label for="no">Non</label><br>
+
+                <label for="frequency"><strong>Vous visitez la bibliothèque:</strong></label>
+                <select name="frequency" id="frequency">
+                    <option value="weekly">Chaque semaine</option>
+                    <option value="monthly">Chaque mois</option>
+                    <option value="occasionally">Rarement</option>
+                    <option value="never">Jamais</option>
+                </select><br>
+
+                <label for="use"><strong>Vous avez déjà utilisé ce site pour:</strong></label><br>
+                <input type="checkbox" id="browse" name="use" value="browse">
+                <label for="browse">Regarder les articles disponibles</label><br>
+                <input type="checkbox" id="holds" name="use" value="holds">
+                <label for="holds">Placer des requêtes</label><br>
+                <input type="checkbox" id="fines" name="use" value="fines">
+                <label for="fines">Payer des pénalités de retard</label><br>
+                <input type="checkbox" id="browse" name="use" value="no">
+                <label for="holds">Voir l'information des succursales</label><br>
+                <input type="checkbox" id="other" name="use" value="other">
+                <label for="other">Autre:</label>
+                <input type="text" id="other" name="other"><br>
+
+                <label for="comment"><strong>Vous pouvez laisser une commentaire sur le site si vous en
+                        avez.</strong></label><br>
+                <textarea id="comment" name="comment" rows="5" cols="55"></textarea><br>
+
+                <input type="submit" value="Soumettre">
+            </form>
+        </div>
+    </div>
     <footer>
         <p id="footer-text">Site web conçu par Oren Scheer.</p>
     </footer>
