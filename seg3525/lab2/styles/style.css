@@ -1,10 +1,39 @@
 /* This style sheet is taken from  https://www.w3schools.com/howto/howto_js_tabs.asp> */
 
+body {
+  font-family: "Average", sans-serif;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+}
+
+#header-div {
+  width: 350px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+img {
+  align-self: left;
+  justify-self: center;
+}
+
+h1 {
+  color: rgb(238, 158, 10);
+  font-family: "Dosis", sans-serif;
+  font-size: 45px;
+}
+
 /* Style the tab */
 .tab {
   overflow: hidden;
   border: 1px solid #ccc;
-  background-color: #f1f1f1;
+  background-color: rgb(238, 158, 10);
+  display: flex;
+  justify-content: center;
 }
 
 /* Style the buttons that are used to open the tab content */
@@ -16,16 +45,17 @@
   cursor: pointer;
   padding: 14px 16px;
   transition: 0.3s;
+  font-size: 15px;
 }
 
 /* Change background color of buttons on hover */
 .tab button:hover {
-  background-color: #ddd;
+  background-color: rgb(241, 190, 95);  
 }
 
 /* Create an active/current tablink class */
 .tab button.active {
-  background-color: #ccc;
+  background-color: rgb(255, 207, 117);
 }
 
 /* Style the tab content */
@@ -34,4 +64,14 @@
   padding: 6px 12px;
   border: 1px solid #ccc;
   border-top: none;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  color: rgb(109, 75, 2);
+}
+
+#footer-text {
+  text-align: left;
 }

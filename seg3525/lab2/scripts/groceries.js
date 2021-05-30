@@ -4,44 +4,100 @@
 
 var products = [
 	{
-		name: "brocoli",
-		vegetarian: true,
-		glutenFree: true,
-		price: 1.99
+		name: "milk",
+		lactoseFree: false,
+		nutFree: true,
+		price: 3.99
 	},
 	{
 		name: "bread",
-		vegetarian: true,
-		glutenFree: false,
+		lactoseFree: true,
+		nutFree: true,
 		price: 2.35
 	},
 	{
 		name: "salmon",
-		vegetarian: false,
-		glutenFree: true,
+		lactoseFree: true,
+		nutFree: true,
 		price: 10.00
+	},
+	{
+		name: "orange juice",
+		lactoseFree: true,
+		nutFree: true,
+		price: 3.50
+	},
+	{
+		name: "yogurt",
+		lactoseFree: false,
+		nutFree: true,
+		price: 5
+	},
+	{
+		name: "peanut butter",
+		lactoseFree: true,
+		nutFree: false,
+		price: 8.99
+	},
+	{
+		name: "cheese",
+		lactoseFree: false,
+		nutFree: true,
+		price: 3.25
+	},
+	{
+		name: "rocky road ice cream",
+		lactoseFree: false,
+		nutFree: false,
+		price: 10.00
+	},
+	{
+		name: "nutella cake",
+		lactoseFree: false,
+		nutFree: false,
+		price: 13.50
+	},
+	{
+		name: "butter",
+		lactoseFree: false,
+		nutFree: true,
+		price: 1.50
+	},
+	{
+		name: "cashews",
+		lactoseFree: true,
+		nutFree: false,
+		price: 12.79
+	},
+	{
+		name: "bottled water",
+		lactoseFree: true,
+		nutFree: true,
+		price: 0.75
 	}
 ];
-
 
 
 // given restrictions provided, make a reduced list of products
 // prices should be included in this list, as well as a sort based on price
 
 function restrictListProducts(prods, restriction) {
-	let product_names = [];
+	let products = [];
 	for (let i = 0; i < prods.length; i += 1) {
-		if ((restriction == "Vegetarian") && (prods[i].vegetarian == true)) {
-			product_names.push(prods[i].name);
+		if ((restriction == "LactoseIntolerant") && (prods[i].lactoseFree == true)) {
+			products.push(prods[i]);
 		}
-		else if ((restriction == "GlutenFree") && (prods[i].glutenFree == true)) {
-			product_names.push(prods[i].name);
+		else if ((restriction == "AllergicToNuts") && (prods[i].nutFree == true)) {
+			products.push(prods[i]);
 		}
 		else if (restriction == "None") {
-			product_names.push(prods[i].name);
+			products.push(prods[i]);
 		}
 	}
-	return product_names;
+	compareProducts = function (productA, productB) {
+		return productA.price > productB.price;
+	}
+	return products.sort(compareProducts);
 }
 
 // Calculate the total price of items, with received parameter being a list of products

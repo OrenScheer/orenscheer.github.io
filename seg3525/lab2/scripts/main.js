@@ -19,7 +19,7 @@ function openInfo(evt, tabName) {
 	// Show the current tab, and add an "active" class to the button that opened the tab
 	document.getElementById(tabName).style.display = "block";
 	evt.currentTarget.className += " active";
-
+	document.getElementsByTagName("title")[0].innerHTML = "Orange Grocer - " + tabName;
 }
 
 
@@ -43,7 +43,8 @@ function populateListProductChoices(slct1, slct2) {
 
 	for (i = 0; i < optionArray.length; i++) {
 
-		var productName = optionArray[i];
+		var productName = optionArray[i].name;
+		var productPrice = optionArray[i].price;
 		// create the checkbox and add in HTML DOM
 		var checkbox = document.createElement("input");
 		checkbox.type = "checkbox";
@@ -54,7 +55,7 @@ function populateListProductChoices(slct1, slct2) {
 		// create a label for the checkbox, and also add in HTML DOM
 		var label = document.createElement('label')
 		label.htmlFor = productName;
-		label.appendChild(document.createTextNode(productName));
+		label.appendChild(document.createTextNode(productName + ", $" + productPrice));
 		s2.appendChild(label);
 
 		// create a breakline node and add in HTML DOM
