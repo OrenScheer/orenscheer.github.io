@@ -9,7 +9,7 @@
     <title>Orange Grocery</title>
 </head>
 
-<body>
+<body onload="populateListProductChoices('dietSelect', 'displayProduct')">
   <header>
     <div id="header-div">
       <img src="images/orange.png" alt="Orange">
@@ -21,7 +21,7 @@
   <div class="tab">
     <button class="tablinks" onclick="openInfo(event, 'Client')">CLIENT</button>
     <button class="tablinks" onclick="openInfo(event, 'Products')">PRODUCTS</button>
-    <button class="tablinks" onclick="openInfo(event, 'Cart')">CART</button>
+    <button class="tablinks" onclick="openInfo(event, 'Cart')" id="rightmostButton">CART</button>
   </div>
 
   <!-- Tab content -->
