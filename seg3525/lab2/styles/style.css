@@ -1,7 +1,8 @@
 /* This style sheet is taken from  https://www.w3schools.com/howto/howto_js_tabs.asp> */
 
 body {
-  font-family: "Average", sans-serif;
+  font-family: "Average", serif;
+  font-size: 18px;
 }
 
 header {
@@ -45,7 +46,7 @@ h1 {
   cursor: pointer;
   padding: 14px 16px;
   transition: 0.3s;
-  font-size: 15px;
+  font-size: 20px;
   border-left: 1px solid black;
 }
 
