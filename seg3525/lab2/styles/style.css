@@ -22,7 +22,7 @@ img {
 }
 
 h1 {
-  color: rgb(238, 158, 10);
+  color: rgb(255, 165, 0);
   font-family: "Dosis", sans-serif;
   font-size: 45px;
 }
@@ -55,7 +55,7 @@ h1 {
 
 /* Change background color of buttons on hover */
 .tab button:hover {
-  background-color: rgb(241, 190, 95);  
+  background-color: rgb(255, 187, 60);  
 }
 
 /* Create an active/current tablink class */
@@ -69,6 +69,7 @@ h1 {
   padding: 6px 12px;
   border: 1px solid #ccc;
   border-top: none;
+  text-align: left;
 }
 
 footer {

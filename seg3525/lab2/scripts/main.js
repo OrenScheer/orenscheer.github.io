@@ -27,15 +27,18 @@ function openInfo(evt, tabName) {
 // generate a checkbox list from a list of products
 // it makes each product name as the label for the checkbos
 
-function populateListProductChoices(slct1, slct2) {
-	var s1 = document.getElementById(slct1);
-	var s2 = document.getElementById(slct2);
+function populateListProductChoices(nameOpts, idDiv) {
+	var opt1 = document.getElementsByName(nameOpts)[0];
+	var opt2 = document.getElementsByName(nameOpts)[1];
+	var opt3 = document.getElementsByName(nameOpts)[2];
+	var display = document.getElementById(idDiv);
 
 	// s2 represents the <div> in the Products tab, which shows the product list, so we first set it empty
-	s2.innerHTML = "";
+	display.innerHTML = "";
 
 	// obtain a reduced list of products based on restrictions
-	var optionArray = restrictListProducts(products, (s1.value || "None"));
+
+	var optionArray = restrictListProducts(products, opt1.checked, opt2.checked, opt3.checked);
 	// for each item in the array, create a checkbox element, each containing information such as:
 	// <input type="checkbox" name="product" value="Bread">
 	// <label for="Bread">Bread/label><br>
@@ -44,21 +47,28 @@ function populateListProductChoices(slct1, slct2) {
 
 		var productName = optionArray[i].name;
 		var productPrice = optionArray[i].price;
+		var organic = optionArray[i].organic ? "(organic)" : "";
 		// create the checkbox and add in HTML DOM
 		var checkbox = document.createElement("input");
 		checkbox.type = "checkbox";
 		checkbox.name = "product";
 		checkbox.value = productName;
-		s2.appendChild(checkbox);
+		checkbox.id = productName;
+		display.appendChild(checkbox);
 
 		// create a label for the checkbox, and also add in HTML DOM
 		var label = document.createElement('label')
 		label.htmlFor = productName;
-		label.appendChild(document.createTextNode(productName + ", $" + productPrice));
-		s2.appendChild(label);
+		label.appendChild(document.createTextNode(productName + ", $" + productPrice + " "));
+
+		var organicSpan = document.createElement('span');
+		organicSpan.style.color = "green";
+		organicSpan.appendChild(document.createTextNode(organic));
+		label.appendChild(organicSpan);
+		display.appendChild(label);
 
 		// create a breakline node and add in HTML DOM
-		s2.appendChild(document.createElement("br"));
+		display.appendChild(document.createElement("br"));
 	}
 }
 
@@ -80,7 +90,16 @@ function selectedItems() {
 	para.appendChild(document.createElement("br"));
 	for (i = 0; i < ele.length; i++) {
 		if (ele[i].checked) {
-			para.appendChild(document.createTextNode(ele[i].value));
+			var text = document.createTextNode(ele[i].value + "\t ");
+			text.id = ele[i].value;
+			para.appendChild(text);
+			var remove = document.createElement("button")
+			remove.onclick = function (event) {
+				console.log(event.target.previousSibling.id);
+				removeItem(event.target.previousSibling.id);
+			};
+			remove.innerHTML = "remove";
+			para.appendChild(remove);
 			para.appendChild(document.createElement("br"));
 			chosenProducts.push(ele[i].value);
 		}
@@ -88,7 +107,14 @@ function selectedItems() {
 
 	// add paragraph and total price
 	c.appendChild(para);
-	c.appendChild(document.createTextNode("Total Price is " + getTotalPrice(chosenProducts)));
+	c.appendChild(document.createTextNode("Your total price is $" + getTotalPrice(chosenProducts)));
+	c.appendChild(document.createElement("br"));
+	c.appendChild(document.createTextNode("Thank you for shopping at Orange Grocery!"));
+}
 
+function removeItem(name) {
+	var checkbox = document.getElementById(name);
+	checkbox.checked = false;
+	selectedItems();
 }
 

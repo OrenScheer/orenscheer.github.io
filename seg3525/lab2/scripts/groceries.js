@@ -7,90 +7,105 @@ var products = [
 		name: "milk",
 		lactoseFree: false,
 		nutFree: true,
-		price: 3.99
+		price: 3.99,
+		organic: false
 	},
 	{
 		name: "bread",
 		lactoseFree: true,
 		nutFree: true,
-		price: 2.35
+		price: 2.35,
+		organic: false
 	},
 	{
 		name: "salmon",
 		lactoseFree: true,
 		nutFree: true,
-		price: 10.00
+		price: 10.00,
+		organic: false
 	},
 	{
 		name: "orange juice",
 		lactoseFree: true,
 		nutFree: true,
-		price: 3.50
+		price: 3.50,
+		organic: true
 	},
 	{
 		name: "yogurt",
 		lactoseFree: false,
 		nutFree: true,
-		price: 5
+		price: 5,
+		organic: true
 	},
 	{
 		name: "peanut butter",
 		lactoseFree: true,
 		nutFree: false,
-		price: 8.99
+		price: 8.99,
+		organic: true
 	},
 	{
 		name: "cheese",
 		lactoseFree: false,
 		nutFree: true,
-		price: 3.25
+		price: 3.25,
+		organic: false
 	},
 	{
 		name: "rocky road ice cream",
 		lactoseFree: false,
 		nutFree: false,
-		price: 10.00
+		price: 10.00,
+		organic: false
 	},
 	{
 		name: "nutella cake",
 		lactoseFree: false,
 		nutFree: false,
-		price: 13.50
+		price: 13.50,
+		organic: false
 	},
 	{
 		name: "butter",
 		lactoseFree: false,
 		nutFree: true,
-		price: 1.50
+		price: 1.50,
+		organic: true
 	},
 	{
 		name: "cashews",
 		lactoseFree: true,
 		nutFree: false,
-		price: 12.79
+		price: 12.79,
+		organic: false
 	},
 	{
 		name: "bottled water",
 		lactoseFree: true,
 		nutFree: true,
-		price: 0.75
+		price: 0.75,
+		organic: true
 	}
 ];
 
-
+function ableToEat(product, lactoseIntolerant, nutFree, organic) {
+	if (!product.nutFree && nutFree) {
+		return false;
+	} else if (!product.lactoseFree && lactoseIntolerant) {
+		return false;
+	} else if (!product.organic && organic) {
+		return false;
+	}
+	return true;
+}
 // given restrictions provided, make a reduced list of products
 // prices should be included in this list, as well as a sort based on price
 
-function restrictListProducts(prods, restriction) {
+function restrictListProducts(prods, lactoseIntolerant, nutFree, organic) {
 	let products = [];
 	for (let i = 0; i < prods.length; i += 1) {
-		if ((restriction == "LactoseIntolerant") && (prods[i].lactoseFree == true)) {
-			products.push(prods[i]);
-		}
-		else if ((restriction == "AllergicToNuts") && (prods[i].nutFree == true)) {
-			products.push(prods[i]);
-		}
-		else if (restriction == "None") {
+		if (ableToEat(prods[i], lactoseIntolerant, nutFree, organic)) {
 			products.push(prods[i]);
 		}
 	}

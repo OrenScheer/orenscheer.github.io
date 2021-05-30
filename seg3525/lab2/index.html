@@ -9,7 +9,7 @@
     <title>Orange Grocery</title>
 </head>
 
-<body onload="populateListProductChoices('dietSelect', 'displayProduct')">
+<body onload="populateListProductChoices('preference', 'displayProduct')">
   <header>
     <div id="header-div">
       <img src="images/orange.png" alt="Orange">
@@ -27,14 +27,16 @@
   <!-- Tab content -->
   <div id="Client" class="tabcontent">
     <h3>Client Information</h3>
-    <p>Tell us a bit about you.</p>
-    Choose a Category:
-    <select id="dietSelect" name="dietSelect" onchange="populateListProductChoices(this.id, 'displayProduct')">
-      <option value=""></option>
-      <option value="LactoseIntolerant">Lactose Intolerant</option>
-      <option value="AllergicToNuts">Allergic to Nuts</option>
-      <option value="None">None</option>
-    </select>
+    <p>Thank you for shopping at Orange Grocery.</p>
+    <p>Please select as many of the following options that apply.</p>
+    <form onchange="populateListProductChoices('preference', 'displayProduct')">
+      <input type="checkbox" name="preference" value="LactoseIntolerant" id="LactoseIntolerant">
+      <label for="LactoseIntolerant">Lactose Intolerant</label><br>
+      <input type="checkbox" name="preference" value="AllergicToNuts" id="AllergicToNuts">
+      <label for="AllergicToNuts">Allergic to Nuts</label><br>
+      <input type="checkbox" name="preference" value="Organic" id="Organic">
+      <label for="Organic">Organic Products Only</label><br>
+    </form>
   </div>
 
   <div id="Products" class="tabcontent">
