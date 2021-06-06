@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <! This style sheet is taken from https://www.w3schools.com/howto/howto_js_tabs.asp>
+    <link href="styles/style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Dosis">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Average">
+    <title>Orange Grocery</title>
+</head>
+
+<body onload="populateListProductChoices('preference', 'grid', document.getElementsByName('sort-by')[0].value)">
+  <header>
+    <div id="header-div">
+      <img src="images/orange.png" alt="Orange">
+      <h1>Orange Grocery</h1>
+    </div>
+  </header>
+  <div id="sidebar">
+    <div id="choices-div">
+      <p>Select your dietary restrictions:</p>
+      <form onchange="populateListProductChoices('preference', 'grid', document.getElementsByName('sort-by')[0].value)">
+        <input type="checkbox" name="preference" value="LactoseIntolerant" id="LactoseIntolerant">
+        <label for="LactoseIntolerant">Lactose Intolerant</label><br>
+        <input type="checkbox" name="preference" value="AllergicToNuts" id="AllergicToNuts">
+        <label for="AllergicToNuts">Allergic to Nuts</label><br>
+        <input type="checkbox" name="preference" value="Organic" id="Organic">
+        <label for="Organic">Organic Products Only</label><br>
+        <br>
+        <label for="sort-by">Sort by:</label><br>
+        <select name="sort-by" id="sort-by">
+          <option value="priceLowToHigh">Price (low to high)</option>
+          <option value="priceHighToLow">Price (high to low)</option>
+          <option value="alphabetical">Alphabetical</option>
+        </select><br>
+      </form>
+    </div>
+  </div>
+  <div id="grid">
+
+  </div>
+
+  <div id="bottom-bar">
+    <p id="total-price">Total price: $13.99</p>
+    <a href="">
+      <button id="checkout">
+        Checkout &nbsp;<img src="images/right-arrow.png" height="24px" width="24px">
+      </button>
+    </a>
+  </div>
+  <script src="scripts/groceries.js"></script>
+  <script src="scripts/main.js"></script>
+
+</body>
+
+</html>
