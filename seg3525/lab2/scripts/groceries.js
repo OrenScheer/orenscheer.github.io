@@ -110,7 +110,13 @@ function restrictListProducts(prods, lactoseIntolerant, nutFree, organic) {
 		}
 	}
 	compareProducts = function (productA, productB) {
-		return productA.price > productB.price;
+		if (productA.price > productB.price) {
+			return 1;
+		}
+		else if (productB.price > productA.price) {
+			return -1;
+		}
+		return 0;
 	}
 	return products.sort(compareProducts);
 }
