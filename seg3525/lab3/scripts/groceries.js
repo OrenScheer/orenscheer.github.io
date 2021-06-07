@@ -9,7 +9,7 @@ var products = [
 		nutFree: true,
 		price: 3.99,
 		organic: false,
-		image: "/images/milk.png",
+		image: "images/milk.png",
 	},
 	{
 		name: "Bread",
@@ -17,7 +17,7 @@ var products = [
 		nutFree: true,
 		price: 2.35,
 		organic: false,
-		image: "/images/bread.png",
+		image: "images/bread.png",
 	},
 	{
 		name: "Salmon",
@@ -25,7 +25,7 @@ var products = [
 		nutFree: true,
 		price: 10.00,
 		organic: false,
-		image: "/images/salmon.jpg",
+		image: "images/salmon.jpg",
 	},
 	{
 		name: "Orange Juice",
@@ -33,7 +33,7 @@ var products = [
 		nutFree: true,
 		price: 3.50,
 		organic: true,
-		image: "/images/orange-juice.jpg",
+		image: "images/orange-juice.jpg",
 	},
 	{
 		name: "Yogurt",
@@ -41,7 +41,7 @@ var products = [
 		nutFree: true,
 		price: 5,
 		organic: true,
-		image: "/images/yogurt.jpg",
+		image: "images/yogurt.jpg",
 	},
 	{
 		name: "Peanut Butter",
@@ -49,7 +49,7 @@ var products = [
 		nutFree: false,
 		price: 8.99,
 		organic: true,
-		image: "/images/peanut-butter.jpg",
+		image: "images/peanut-butter.jpg",
 	},
 	{
 		name: "Cheese",
@@ -73,7 +73,7 @@ var products = [
 		nutFree: false,
 		price: 13.50,
 		organic: false,
-		image: "/images/nutella-cake.jpg",
+		image: "images/nutella-cake.jpg",
 	},
 	{
 		name: "Butter",
@@ -81,7 +81,7 @@ var products = [
 		nutFree: true,
 		price: 1.50,
 		organic: true,
-		image: "/images/butter.png",
+		image: "images/butter.png",
 	},
 	{
 		name: "Cashews",
@@ -89,7 +89,7 @@ var products = [
 		nutFree: false,
 		price: 12.79,
 		organic: false,
-		image: "/images/cashews.jpg",
+		image: "images/cashews.jpg",
 	},
 	{
 		name: "Bottled Water",
@@ -97,7 +97,7 @@ var products = [
 		nutFree: true,
 		price: 0.75,
 		organic: true,
-		image: "/images/bottled-water.jpg",
+		image: "images/bottled-water.jpg",
 	},
 	{
 		name: "Peppers",
