@@ -100,7 +100,7 @@ function populateListProductChoices(nameOpts, idDiv, sorterName) {
 
 		let label = document.createElement("label");
 		label.htmlFor = "quantity";
-		label.innerHTML = "Quantity:";
+		label.innerHTML = "Quantity: ";
 		select.appendChild(label);
 
 		let qty = document.createElement("input");
@@ -144,13 +144,19 @@ function toggleDatePicker() {
 	let picker = document.getElementById("date-picker");
 	if (picker.style.display == "none" || !picker.style.display) {
 		picker.style.display = "flex";
+		document.getElementsByTagName("header")[0].style.opacity = "20%";
+		document.getElementById("grid").style.opacity = "20%";
+		document.getElementById("sidebar").style.opacity = "20%";
 	} else {
-		picker.style.display = "none";
+		hideDatePicker();
 	}
 }
 
-function hideDatePicker(event) {
+function hideDatePicker() {
 	picker.style.display = "none";
+	document.getElementsByTagName("header")[0].style.opacity = "100%";
+	document.getElementById("grid").style.opacity = "100%";
+	document.getElementById("sidebar").style.opacity = "100%";
 }
 
 let picker = document.getElementById("date-picker");
@@ -165,3 +171,8 @@ calendar.addEventListener("click", (event) => {
 let date = document.getElementById("date");
 date.value = new Date().toISOString().slice(0, 10);
 date.min = new Date().toISOString().slice(0, 10);
+
+let time = document.getElementById("time");
+time.value = "12:30";
+time.min = "8:00";
+time.max = "18:00";
