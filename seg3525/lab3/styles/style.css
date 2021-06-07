@@ -91,10 +91,13 @@ a {
 
 #sort-by {
   width: 200px;
+  margin-top: 10px;
+  margin-left: 5px;
 }
 
 .form-labels {
   margin-left: 5px;
+  margin-bottom: 10px;
 }
 
 select {
@@ -145,4 +148,12 @@ select {
 
 .date-time {
   font-family: sans-serif;
+}
+
+#choices-div > form > input {
+  margin-left: 5px;
+}
+
+#choices-div > form > select {
+  margin-left: 5px;
 }
