@@ -1,27 +1,3 @@
-
-// This function is called when any of the tab is clicked
-// It is adapted from https://www.w3schools.com/howto/howto_js_tabs.asp
-
-function openInfo(evt, tabName) {
-
-	// Get all elements with class="tabcontent" and hide them
-	tabcontent = document.getElementsByClassName("tabcontent");
-	for (i = 0; i < tabcontent.length; i++) {
-		tabcontent[i].style.display = "none";
-	}
-
-	// Get all elements with class="tablinks" and remove the class "active"
-	tablinks = document.getElementsByClassName("tablinks");
-	for (i = 0; i < tablinks.length; i++) {
-		tablinks[i].className = tablinks[i].className.replace(" active", "");
-	}
-
-	// Show the current tab, and add an "active" class to the button that opened the tab
-	document.getElementById(tabName).style.display = "block";
-	evt.currentTarget.className += " active";
-	document.getElementsByTagName("title")[0].innerHTML = "Orange Grocer - " + tabName;
-}
-
 function priceLowToHigh(productA, productB) {
 	if (productA.price > productB.price) {
 		return 1;
@@ -61,12 +37,10 @@ function setDivHeights(length, grid, sidebar) {
 	} else {
 		newHeight = "800px";
 	}
+	document.getElementById(grid).style.paddingBottom = "80px";
 	document.getElementById(grid).style.height = newHeight;
 	document.getElementById(sidebar).style.height = newHeight.replace("00", "50");
 }
-
-// generate a checkbox list from a list of products
-// it makes each product name as the label for the checkbos
 
 function populateListProductChoices(nameOpts, idDiv, sorterName) {
 	var opt1 = document.getElementsByName(nameOpts)[0];
@@ -83,9 +57,10 @@ function populateListProductChoices(nameOpts, idDiv, sorterName) {
 
 	for (i = 0; i < optionArray.length; i++) {
 		let tile = document.createElement("div");
+		tile.className = "item";
 		tile.style.height = "250px";
 		tile.style.width = "230px";
-		tile.style.border = "2px solid black";
+		tile.style.border = "2px solid orange";
 		tile.style.display = "flex";
 		tile.style.flexDirection = "column";
 		tile.style.justifyContent = "flex-start";
@@ -102,6 +77,7 @@ function populateListProductChoices(nameOpts, idDiv, sorterName) {
 		name.style.marginBottom = "10px";
 		name.style.fontSize = "20px";
 		name.style.fontWeight = "bold";
+		name.className = "name";
 		name.appendChild(document.createTextNode(`${optionArray[i].name} `));
 		if (optionArray[i].organic) {
 			let organicSpan = document.createElement('span');
@@ -112,6 +88,7 @@ function populateListProductChoices(nameOpts, idDiv, sorterName) {
 		tile.appendChild(name);
 
 		let price = document.createElement("p");
+		price.className = "price";
 		price.style.marginTop = "0px";
 		price.style.marginBottom = "10px";
 		price.style.fontSize = "20px";
@@ -128,63 +105,63 @@ function populateListProductChoices(nameOpts, idDiv, sorterName) {
 
 		let qty = document.createElement("input");
 		qty.type = "number";
-		qty.id = "quantity";
+		qty.className = "quantity";
 		qty.min = "0";
 		qty.max = "200";
-		qty.value = "0";
+		if (sessionStorage.getItem(name.firstChild.nodeValue) === null) {
+			qty.value = "0";
+		} else {
+			qty.value = sessionStorage.getItem(name.firstChild.nodeValue);
+		}
 		qty.style.height = "20px";
 		qty.style.width = "50px";
+		qty.onchange = recalculatePrice;
 		select.appendChild(qty);
 
 		tile.appendChild(select);
 
 		display.appendChild(tile);
 	}
+
+	recalculatePrice();
 }
 
-// This function is called when the "Add selected items to cart" button in clicked
-// The purpose is to build the HTML to be displayed (a Paragraph) 
-// We build a paragraph to contain the list of selected items, and the total price
+function recalculatePrice() {
+	let items = document.getElementsByClassName("item");
+	let totalPrice = 0;
+	for (i = 0; i < items.length; i++) {
+		let qty = Number.parseFloat(items[i].getElementsByClassName("quantity")[0].value);
+		sessionStorage.setItem(items[i].getElementsByClassName("name")[0].firstChild.nodeValue, qty);
 
-function selectedItems() {
-
-	var ele = document.getElementsByName("product");
-	var chosenProducts = [];
-
-	var c = document.getElementById('displayCart');
-	c.innerHTML = "";
-
-	// build list of selected item
-	var para = document.createElement("P");
-	para.innerHTML = "You selected : ";
-	para.appendChild(document.createElement("br"));
-	for (i = 0; i < ele.length; i++) {
-		if (ele[i].checked) {
-			var text = document.createTextNode(ele[i].value + "\t ");
-			text.id = ele[i].value;
-			para.appendChild(text);
-			var remove = document.createElement("button")
-			remove.onclick = function (event) {
-				console.log(event.target.previousSibling.id);
-				removeItem(event.target.previousSibling.id);
-			};
-			remove.innerHTML = "remove";
-			para.appendChild(remove);
-			para.appendChild(document.createElement("br"));
-			chosenProducts.push(ele[i].value);
-		}
+		let price = Number.parseFloat(items[i].getElementsByClassName("price")[0].firstChild.nodeValue.replace("$", ""));
+		totalPrice += qty * price;
 	}
-
-	// add paragraph and total price
-	c.appendChild(para);
-	c.appendChild(document.createTextNode("Your total price is $" + getTotalPrice(chosenProducts)));
-	c.appendChild(document.createElement("br"));
-	c.appendChild(document.createTextNode("Thank you for shopping at Orange Grocery!"));
+	totalPrice = Number.parseFloat(totalPrice.toFixed(2));
+	document.getElementById("total-price").innerHTML = `Total price: $${totalPrice}`;
 }
 
-function removeItem(name) {
-	var checkbox = document.getElementById(name);
-	checkbox.checked = false;
-	selectedItems();
+function toggleDatePicker() {
+	let picker = document.getElementById("date-picker");
+	if (picker.style.display == "none" || !picker.style.display) {
+		picker.style.display = "flex";
+	} else {
+		picker.style.display = "none";
+	}
 }
 
+function hideDatePicker(event) {
+	picker.style.display = "none";
+}
+
+let picker = document.getElementById("date-picker");
+let calendar = document.getElementById("calendar");
+picker.addEventListener("click", (event) => {
+	event.stopPropagation();
+})
+calendar.addEventListener("click", (event) => {
+	event.stopPropagation();
+})
+
+let date = document.getElementById("date");
+date.value = new Date().toISOString().slice(0, 10);
+date.min = new Date().toISOString().slice(0, 10);

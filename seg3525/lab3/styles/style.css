@@ -59,7 +59,7 @@ a {
 }
 
 #bottom-bar {
-  background-color: lightblue;
+  background-color: rgb(224, 247, 255);
   bottom: 0;
   position: fixed;
   width: 100%;
@@ -88,3 +88,61 @@ a {
   column-gap: 21px;
   padding-bottom: 80px;
 }
+
+#sort-by {
+  width: 200px;
+}
+
+.form-labels {
+  margin-left: 5px;
+}
+
+select {
+  font-size: 16px;
+  font-family: "Average", serif;
+}
+
+#delivery {
+  font-size: 20px;
+}
+
+#calendar {
+  padding-top: 5px;
+}
+
+#calendar:hover {
+  cursor: pointer;
+}
+
+#date-picker {
+  display: none;
+  position: fixed;
+  bottom: 80px;
+  right: 220px;
+  width: 200px;
+  height: 150px;
+  background-color: rgb(255, 165, 0);
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+#X {
+  font-family: sans-serif;
+  font-size: 25px;
+  align-self: end;
+  margin-top: 5px;
+  margin-right: 5px;
+  margin-bottom: 0px;
+}
+
+#X:hover {
+  cursor: pointer;
+}
+
+#pick-a-date {
+  margin-top: 0px;
+}
+
+.date-time {
+  font-family: sans-serif;
+}}

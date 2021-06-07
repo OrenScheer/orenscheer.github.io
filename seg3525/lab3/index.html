@@ -9,7 +9,11 @@
     <title>Orange Grocery</title>
 </head>
 
-<body onload="populateListProductChoices('preference', 'grid', document.getElementsByName('sort-by')[0].value)">
+<body onload="
+  {
+    populateListProductChoices('preference', 'grid', document.getElementsByName('sort-by')[0].value);
+    sessionStorage.clear();
+  }" onclick="hideDatePicker(event)">
   <header>
     <div id="header-div">
       <img src="images/orange.png" alt="Orange">
@@ -18,7 +22,7 @@
   </header>
   <div id="sidebar">
     <div id="choices-div">
-      <p>Select your dietary restrictions:</p>
+      <p class="form-labels">Select your dietary restrictions:</p>
       <form onchange="populateListProductChoices('preference', 'grid', document.getElementsByName('sort-by')[0].value)">
         <input type="checkbox" name="preference" value="LactoseIntolerant" id="LactoseIntolerant">
         <label for="LactoseIntolerant">Lactose Intolerant</label><br>
@@ -27,7 +31,7 @@
         <input type="checkbox" name="preference" value="Organic" id="Organic">
         <label for="Organic">Organic Products Only</label><br>
         <br>
-        <label for="sort-by">Sort by:</label><br>
+        <label for="sort-by" class="form-labels">Sort by:</label><br>
         <select name="sort-by" id="sort-by">
           <option value="priceLowToHigh">Price (low to high)</option>
           <option value="priceHighToLow">Price (high to low)</option>
@@ -40,14 +44,24 @@
 
   </div>
 
+  <div id="date-picker">
+    <p id="X" onclick="toggleDatePicker()">X</p>
+    <label for="date" id="pick-a-date">Pick a date: </label>
+    <input type="date" id="date" class="date-time">
+    <label for="time" id="pick-a-time">Pick a time: </label>
+    <input type="time" id="time" class="date-time">
+  </div>
   <div id="bottom-bar">
-    <p id="total-price">Total price: $13.99</p>
+    <p id="delivery">Pick a delivery date and time (optional): </p>
+    <img src="images/calendar.png" height="30px" width="30px" id="calendar" onclick="toggleDatePicker();">
+    <p id="total-price">Total price: $0.00</p>
     <a href="">
       <button id="checkout">
-        Checkout &nbsp;<img src="images/right-arrow.png" height="24px" width="24px">
+        Order &nbsp;<img src="images/right-arrow.png" height="24px" width="24px">
       </button>
     </a>
   </div>
+
   <script src="scripts/groceries.js"></script>
   <script src="scripts/main.js"></script>
 

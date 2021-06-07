@@ -98,7 +98,15 @@ var products = [
 		price: 0.75,
 		organic: true,
 		image: "/images/bottled-water.jpg",
-	}
+	},
+	{
+		name: "Peppers",
+		lactoseFree: true,
+		nutFree: true,
+		price: 3.99,
+		organic: true,
+		image: "images/peppers.jpg"
+	},
 ];
 
 function ableToEat(product, lactoseIntolerant, nutFree, organic) {
@@ -122,15 +130,4 @@ function restrictListProducts(prods, lactoseIntolerant, nutFree, organic, sorter
 		}
 	}
 	return products.sort(sorter);
-}
-
-// Calculate the total price of items, with received parameter being a list of products
-function getTotalPrice(chosenProducts) {
-	totalPrice = 0;
-	for (let i = 0; i < products.length; i += 1) {
-		if (chosenProducts.indexOf(products[i].name) > -1) {
-			totalPrice += products[i].price;
-		}
-	}
-	return totalPrice;
 }
