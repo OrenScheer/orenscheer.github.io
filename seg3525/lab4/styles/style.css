@@ -1,0 +1,12 @@
+h1 {
+    color: rgb(255, 165, 0);
+}
+
+.brand-name {
+    font-family: "Dosis";
+    font-size: 3rem;
+}
+
+.card-text, .card-title {
+    padding-left: 5px;
+}
