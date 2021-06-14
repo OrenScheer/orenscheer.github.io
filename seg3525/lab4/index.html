@@ -35,8 +35,8 @@
     </div>
 
 
-    <div class="container-fluid">
-        <h3>Meet our team</h3>
+    <div class="container-fluid mt-3">
+        <h3>Meet Our Team</h3>
         <div class="row">
             <div class="col d-flex justify-content-center">
                 <div class="card">
@@ -84,25 +84,151 @@
             </div>
         </div>
     </div>
-    <div class="container-fluid">
-        <h3>Contact & Hours</h3>
+    <div class="container-fluid mt-4">
+        <h3 class="mb-3">Frequently Asked Questions</h3>
+        <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                        Are you open for walk-ins?
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        Unfortunately, do the pandemic, we are closed for walk-ins at this time. Please book an
+                        appointment instead.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        What safety precautions are in place due to the pandemic?
+                    </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        The health, safety, and well-being of our customers, staff, and pets are of the utmost
+                        importance to us. This is why we have heavily invested in creating a safe environment for all.
+                        The changes include:
+                        <ul>
+                            <li>A brand-new, $15,000 ventilation system</li>
+                            <li>N-95 respirators worn by staff at all time</li>
+                            <li>Mandatory face coverings worn by all inside</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        I have a question that isn't answered here.
+                    </button>
+                </h2>
+                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        Please fill out our <a href="#form">contact form</a>. We will respond within 2 business days.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid mt-4">
+        <h3 class="mb-3">Contact & Hours</h3>
         <div class="row">
-            <div class="col">
+            <div class="col-5">
                 <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2103.059923052915!2d-75.74490178221811!3d45.270123404475626!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4ccdfcddcf910d03%3A0x41bf9f05716f608c!2s50%20Marketplace%20Ave%2C%20Nepean%2C%20ON%20K2J%205G4!5e0!3m2!1sen!2sca!4v1623617523619!5m2!1sen!2sca"
                     width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
-            <div class="col">
+            <div class="col-3 mt-2">
                 <i class="bi-pin-map"></i>
-                <p></p>
+                <address class="d-inline">50 Marketplace Avenue<br>Nepean, ON K2J 5G4<br></address>
                 <i class="bi-envelope"></i>
-                <p></p>
+                <a href="mailto:contact@orangevet.ca">
+                    <address class="d-inline">
+                        contact@orangevet.ca
+                    </address>
+                </a><br>
                 <i class="bi-telephone"></i>
-                <p></p>
-                
+                <address class="d-inline">613-321-7213</address>
+                <h4 class="mt-4">Hours</h4>
+                <div class="row">
+                    <div class="col">
+                        Monday
+                    </div>
+                    <div class="col text-end">
+                        8:00-17:30
+                    </div>
+                </div>
+                <div class="row bg-light">
+                    <div class="col">
+                        Tuesday
+                    </div>
+                    <div class="col text-end">
+                        8:00-17:30
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        Wednesday
+                    </div>
+                    <div class="col text-end">
+                        8:00-17:30
+                    </div>
+                </div>
+                <div class="row bg-light">
+                    <div class="col">
+                        Thursday
+                    </div>
+                    <div class="col text-end">
+                        8:00-17:30
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        Friday
+                    </div>
+                    <div class="col text-end">
+                        9:00-17:00
+                    </div>
+                </div>
+                <div class="row bg-light">
+                    <div class="col">
+                        Saturday
+                    </div>
+                    <div class="col text-end">
+                        9:30-16:30
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        Sunday
+                    </div>
+                    <div class="col text-end">
+                        10:00-15:00
+                    </div>
+                </div>
             </div>
-            <div class="col">
-
+            <div class="col-4">
+                <form id="form">
+                    <label for="name" class="form-label mt-1" required>Full Name</label>
+                    <input type="text" class="form-control" id="name">
+                    <label for="email" class="form-label mt-1">Email Address</label>
+                    <input type="email" class="form-control" id="email" required>
+                    <label for="phone" class="form-label mt-1">Phone Number</label>
+                    <input type="tel" class="form-control" id="phone">
+                    <label for="question" class="form-label mt-1">Question/Concern/Feedback</label>
+                    <textarea id="question" class="form-control" rows="5"></textarea>
+                    <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                    <div class="form-text">We will respond within 2 business days.</div>
+                </form>
             </div>
         </div>
     </div>
