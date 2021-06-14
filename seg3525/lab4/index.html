@@ -10,10 +10,10 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Dosis">
     <link href="styles/style.css" rel="stylesheet" type="text/css">
     <link rel="shortcut icon" type="image/png" href="images/logo.png" />
-    <title>Orange vet</title>
+    <title>Orange Vet</title>
 </head>
 
-<body class="container-fluid">
+<body class="container-fluid bg-light">
     <nav class="navbar navbar-expand-lg navbar-light bg-light py-3 row">
         <div class="col">
             <a class="navbar-brand d-flex flex-sm-row align-items-center">
@@ -21,6 +21,15 @@
                     class="float-sm-left">
                 <h1 class="ms-2 brand-name">Orange Veterinary Hospital</h1>
             </a>
+        </div>
+        <div class="col">
+            <p class="fst-italic d-inline">"Located in the heart of Barrhaven - fast, friendly, and always
+                prepared!"<br>-Jennifer A.</p>
+            <i class="bi bi-star-fill ms-3"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
         </div>
     </nav>
 
@@ -33,26 +42,125 @@
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 
+    <div class="container-fluid mt-3">
+        <h3>Services</h3>
+        <div class="divider"></div>
+        <div class="row">
+            <div class="col-md-2 d-flex justify-content-center">
+                <div class="card border-0">
+                    <div card="card-body">
+                        <h5 class="card-title">Annual checkup</h5>
+                        <p class="card-text">A preventative visit to make sure all is well. Anything that arises will be
+                            addressed.</p>
+                        <button type="button" class="btn btn-primary m-1" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal">Book</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2 d-flex justify-content-center">
+                <div class="card border-0">
+                    <div card="card-body">
+                        <h5 class="card-title">Vaccinations</h5>
+                        <p class="card-text">Just like humans, pets need vaccines against common ailments to stay
+                            healthy.</p>
+                        <button type="button" class="btn btn-primary m-1" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal">Book</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2 d-flex justify-content-center">
+                <div class="card border-0">
+                    <div card="card-body">
+                        <h5 class="card-title">Surgery</h5>
+                        <p class="card-text">Through any surgery, your pet's standard of care will be the highest in the
+                            business.</p>
+                        <button type="button" class="btn btn-primary m-1" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal">Book</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2 d-flex justify-content-center">
+                <div class="card border-0">
+                    <div card="card-body">
+                        <h5 class="card-title">Dentistry</h5>
+                        <p class="card-text">The health of your pet's teeth are a very important part of their
+                            well-being.</p>
+                        <button type="button" class="btn btn-primary m-1" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal">Book</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2 d-flex justify-content-center">
+                <div class="card border-0">
+                    <div card="card-body">
+                        <h5 class="card-title">Diagnostics</h5>
+                        <p class="card-text">If you have concerns about a specific problem, we will get to the bottom of
+                            it.</p>
+                        <button type="button" class="btn btn-primary m-1" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal">Book</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2 d-flex justify-content-center">
+                <div class="card border-0">
+                    <div card="card-body">
+                        <h5 class="card-title">Grooming</h5>
+                        <p class="card-text">Keep your pet healthy and happy with our professional grooming services.
+                        </p>
+                        <button type="button" class="btn btn-primary m-1" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal">Book</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">To book, please enter your details.</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <label for="name" class="form-label mt-1" required>Full Name</label>
+                    <input type="text" class="form-control" id="name">
+                    <label for="email" class="form-label mt-1">Email Address</label>
+                    <input type="email" class="form-control" id="email" required>
+                    <label for="phone" class="form-label mt-1">Phone Number</label>
+                    <input type="tel" class="form-control" id="phone">
+                    <label for="date" class="form-label mt-1">Pick a date</label>
+                    <input type="date" id="date" class="form-control">
+                    <label for="time" class="form-label mt-1">Pick a time</label>
+                    <input type="time" id="time" class="form-control">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Book</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="container-fluid mt-3">
         <h3>Meet Our Team</h3>
+        <div class="divider"></div>
         <div class="row">
             <div class="col-md-3 d-flex justify-content-center">
-                <div class="card">
-                    <img class="card-image-top rounded-circle" src="images/vet1.jpg" alt="Dr.V T Rinary" width="100%"
-                        height="300px">
+                <div class="card border-0">
+                    <img class="card-image-top rounded-circle staff" src="images/vet1.jpg" alt="Dr.V T Rinary"
+                        width="100%" height="300px">
                     <div card="card-body">
                         <h5 class="card-title">Dr. V T Rinary</h5>
                         <p class="card-text">Dr. Rinary brings over 25 years of experience in the veterinary business.
-                            He is
-                            a founding partner in Orange Veterinary Hospital.</p>
+                            He is a founding partner of Orange Veterinary Hospital.</p>
                     </div>
                 </div>
             </div>
             <div class="col-md-3 d-flex justify-content-center">
-                <div class="card">
-                    <img class="card-image-top rounded-circle" src="images/vet2.png" alt="Dr.V T Rinary" width="100%"
-                        height="300px">
+                <div class="card border-0">
+                    <img class="card-image-top rounded-circle staff" src="images/vet2.png" alt="Dr.V T Rinary"
+                        width="100%" height="300px">
                     <div card="card-body">
                         <h5 class="card-title">Dr. E C Animal</h5>
                         <p class="card-text">Dr. Animal is a founding partner of Orange Veterinary Hospital.</p>
@@ -60,9 +168,9 @@
                 </div>
             </div>
             <div class="col-md-3 d-flex justify-content-center">
-                <div class="card">
-                    <img class="card-image-top rounded-circle" src="images/vet3.jpg" alt="Dr.V T Rinary" width="100%"
-                        height="300px">
+                <div class="card border-0">
+                    <img class="card-image-top rounded-circle staff" src="images/vet3.jpg" alt="Dr.V T Rinary"
+                        width="100%" height="300px">
                     <div card="card-body">
                         <h5 class="card-title">Dr. J Doe</h5>
                         <p class="card-text">Dr. Doe graduated in 2014 from the Orange School of Vterinary Sciences. She
@@ -71,9 +179,9 @@
                 </div>
             </div>
             <div class="col-md-3 d-flex justify-content-center">
-                <div class="card">
-                    <img class="card-image-top rounded-circle" src="images/vet4.jpg" alt="Dr.V T Rinary" width="100%"
-                        height="300px">
+                <div class="card border-0">
+                    <img class="card-image-top rounded-circle staff" src="images/vet4.jpg" alt="Dr.V T Rinary"
+                        width="100%" height="300px">
                     <div card="card-body">
                         <h5 class="card-title">Dr. A Smith</h5>
                         <p class="card-text">Dr. Smith, the newest addition to the Orange team, joined in April 2020.
@@ -84,7 +192,8 @@
         </div>
     </div>
     <div class="container-fluid mt-4">
-        <h3 class="mb-3">Frequently Asked Questions</h3>
+        <h3>Frequently Asked Questions</h3>
+        <div class="divider"></div>
         <div class="accordion" id="accordionExample">
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingOne">
@@ -139,7 +248,8 @@
         </div>
     </div>
     <div class="container-fluid mt-4">
-        <h3 class="mb-3">Contact & Hours</h3>
+        <h3>Contact & Hours</h3>
+        <div class="divider"></div>
         <div class="row">
             <div class="col-xl-5">
                 <iframe
