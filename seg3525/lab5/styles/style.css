@@ -1,0 +1,69 @@
+h1 {
+    color: rgb(255, 165, 0);
+    font-family: "Dosis";
+}
+
+h2, h3, h4, h5, h6 {
+    font-family: "Barlow";
+}
+
+h3 {
+    font-weight: bold;
+}
+
+.brand-name {
+    font-family: "Dosis";
+    font-size: 3rem;
+}
+
+.card-text, .card-title {
+    padding-left: 5px;
+}
+
+.divider {
+    height: 4px;
+    width: 60px;
+    margin-bottom: 10px;
+    margin-top: -5px;
+    background-color: rgb(255, 165, 0);
+}
+
+.btn {
+    background-color: rgb(255, 165, 0);
+    color: black;
+    border: none;
+}
+
+.btn:hover {
+    background-color:rgb(197, 142, 40);
+    border: none;
+}
+
+.btn:active {
+    background-color: rgb(173, 118, 16);
+    border: none;
+}
+
+.btn:focus {
+    background-color: rgb(173, 118, 16);
+    box-shadow: none !important;
+}
+
+.staff {
+    border: 1px solid rgb(255, 165, 0);
+}
+
+.accordion-button {
+    background-color: white !important;
+    color: black !important;
+}
+
+.accordion-button:focus {
+    background-color: rgba(255, 166, 0, 0.527);
+    box-shadow: none;
+    color: black;
+}
+
+.accordion-button:focus {
+    background-color: rgba(255, 166, 0, 0.527) !important;
+}
