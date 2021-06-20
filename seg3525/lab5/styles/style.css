@@ -35,7 +35,7 @@ h3 {
 }
 
 .btn:hover {
-    background-color:rgb(197, 142, 40);
+    background-color:rgba(255, 165, 0, 0.5);
     border: none;
 }
 
@@ -45,8 +45,7 @@ h3 {
 }
 
 .btn:focus {
-    background-color: rgb(173, 118, 16);
-    box-shadow: none !important;
+    background-color: rgb(230, 156, 21);
 }
 
 .staff {
@@ -54,14 +53,7 @@ h3 {
 }
 
 .accordion-button {
-    background-color: white !important;
     color: black !important;
-}
-
-.accordion-button:focus {
-    background-color: rgba(255, 166, 0, 0.527);
-    box-shadow: none;
-    color: black;
 }
 
 .accordion-button:focus {
