@@ -1,0 +1,81 @@
+h1 {
+    color: rgb(255, 165, 0);
+    font-family: "Dosis";
+}
+
+h2, h3, h4, h5, h6 {
+    font-family: "Barlow";
+}
+
+h3 {
+    font-weight: bold;
+}
+
+.brand-name {
+    font-family: "Dosis";
+    font-size: 3rem;
+}
+
+.card-text, .card-title {
+    padding-left: 5px;
+}
+
+.divider {
+    height: 4px;
+    width: 60px;
+    margin-bottom: 10px;
+    margin-top: -5px;
+    background-color: rgb(255, 165, 0);
+}
+
+.btn {
+    background-color: rgb(255, 165, 0);
+    color: black;
+    border: none;
+}
+
+.btn:hover {
+    background-color:rgba(255, 165, 0, 0.5);
+    border: none;
+}
+
+.btn:active {
+    background-color: rgb(173, 118, 16);
+    border: none;
+}
+
+.btn:focus {
+    background-color: rgb(230, 156, 21);
+}
+
+.staff {
+    border: 1px solid rgb(255, 165, 0);
+}
+
+.accordion-button {
+    color: black !important;
+}
+
+.accordion-button:focus {
+    background-color: rgba(255, 166, 0, 0.527) !important;
+}
+
+#nav-links {
+    background-color: rgb(245, 185, 73) !important;
+    height: 50px;
+    margin-top: -2px;
+}
+
+#services::before, #team::before, #faq::before, #contact::before { 
+    display: block; 
+    content: " "; 
+    margin-top: -50px; 
+    height: 50px; 
+    visibility: hidden; 
+    pointer-events: none;
+}
+
+.section {
+    padding-left: 0;
+    padding-right: 0;
+}
