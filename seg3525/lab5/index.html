@@ -19,7 +19,7 @@
 </head>
 
 <body class="container-fluid bg-light">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light py-3 row">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light py-3 row container-fluid section">
         <div class="col-xl-6">
             <a class="navbar-brand d-flex flex-sm-row align-items-center">
                 <img src="images/logo.png" alt="Orange Veterinary Hospital" width="80px" height="80px"
@@ -37,9 +37,26 @@
             <i class="bi bi-star-fill"></i>
         </div>
     </nav>
+    <div class="justify-content-end sticky-top bg-light d-flex   align-items-center container-fluid section"
+        id="nav-links">
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link" href="#services">Services</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#team">Team</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#faq">FAQ</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#contact">Contact & Hours</a>
+            </li>
+        </ul>
+    </div>
 
-    <div class="alert alert-warning alert-dismissible fade show orange" role="alert">
-        <i class="bi-info-circle-fill"></i>
+    <div class="alert alert-warning alert-dismissible fade show orange container-fluid" role="alert">
+        <i class="bi-exclamation-triangle-fill"></i>
         <strong>Latest COVID-19 Information</strong>
         <p>We are open for business by appointment only.<br>
             We have added additional measures to keep our staff, customers, and animals safe.<br>
@@ -47,18 +64,19 @@
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 
-    <p class="container-fluid mt-3">Located in Barrhaven at Strandherd & Greenbank, we have been proudly serving
+    <p class="container-fluid mt-3 section">Located in Barrhaven at Strandherd & Greenbank, we have been proudly serving
         families and their pets since
         2010.</p>
-    <div class="container-fluid mt-3">
-        <h3>Services</h3>
+    <div class="container-fluid mt-3 section" id="services">
+        <h3><i class="bi-clipboard-plus me-2"></i>Services</h3>
         <div class="divider"></div>
         <div class="row">
             <div class="col-md-2 d-flex justify-content-center">
                 <div class="card border-0">
                     <div card="card-body">
                         <h4 clas="card-title">Annual checkup</h4>
-                        <p class="card-text">A preventative visit to make sure all is well. Anything that arises will be
+                        <p class="card-text">A preventative visit to make sure all is well. Anything that arises
+                            will be
                             addressed.</p>
                         <button type="button" class="btn m-1" data-bs-toggle="modal"
                             data-bs-target="#exampleModal">Book</button>
@@ -80,7 +98,8 @@
                 <div class="card border-0">
                     <div card="card-body">
                         <h4 class="card-title">Surgery</h4>
-                        <p class="card-text">Through any surgery, your pet's standard of care will be the highest in the
+                        <p class="card-text">Through any surgery, your pet's standard of care will be the highest in
+                            the
                             business.</p>
                         <button type="button" class="btn m-1" data-bs-toggle="modal"
                             data-bs-target="#exampleModal">Book</button>
@@ -102,7 +121,8 @@
                 <div class="card border-0">
                     <div card="card-body">
                         <h4 class="card-title">Diagnostics</h4>
-                        <p class="card-text">If you have concerns about a specific problem, we will get to the bottom of
+                        <p class="card-text">If you have concerns about a specific problem, we will get to the
+                            bottom of
                             it.</p>
                         <button type="button" class="btn m-1" data-bs-toggle="modal"
                             data-bs-target="#exampleModal">Book</button>
@@ -113,7 +133,8 @@
                 <div class="card border-0">
                     <div card="card-body">
                         <h4 class="card-title">Grooming</h4>
-                        <p class="card-text">Keep your pet healthy and happy with our professional grooming services.
+                        <p class="card-text">Keep your pet healthy and happy with our professional grooming
+                            services.
                         </p>
                         <button type="button" class="btn m-1" data-bs-toggle="modal"
                             data-bs-target="#exampleModal">Book</button>
@@ -138,6 +159,7 @@
                     <input type="email" class="form-control" id="email" required>
                     <label for="phone" class="form-label mt-1">Phone Number</label>
                     <input type="tel" class="form-control" id="phone" required>
+                    <label for="expert" class="form-label mt-1">Veterinarian</label>
                     <select class="form-select" id="expert">
                         <option selected>No preference</option>
                         <option value="Rinary">Dr. Rinary</option>
@@ -145,10 +167,13 @@
                         <option value="Doe">Dr. Doe</option>
                         <option value="Smith">Dr. Smith</option>
                     </select>
-                    <label for="date" class="form-label mt-1">Pick a Date</label>
+                    <label for="date" class="form-label mt-1">Date</label>
                     <input type="date" id="date" class="form-control" required>
-                    <label for="time" class="form-label mt-1">Pick a Time</label>
+                    <label for="time" class="form-label mt-1">Time</label>
                     <input type="time" id="time" class="form-control">
+                    <label for="credit card" class="form-label mt-1">Credit
+                        Card<i class="bi-credit-card ms-2"></i></label>
+                    <input type="text" id="credit card" class="form-control">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn">Book</button>
@@ -157,8 +182,8 @@
         </div>
     </div>
 
-    <div class="container-fluid mt-3">
-        <h3>Meet Our Team</h3>
+    <div class="container-fluid mt-3 section" id="team">
+        <h3><i class="bi-people me-2"></i>Meet Our Team</h3>
         <div class="divider"></div>
         <div class="row">
             <div class="col-md-3 d-flex justify-content-center">
@@ -167,7 +192,8 @@
                         width="100%" height="300px">
                     <div card="card-body">
                         <h5 class="card-title">Dr. V T Rinary</h5>
-                        <p class="card-text">Dr. Rinary brings over 25 years of experience in the veterinary business.
+                        <p class="card-text">Dr. Rinary brings over 25 years of experience in the veterinary
+                            business.
                             He is a founding partner of Orange Veterinary Hospital.</p>
                     </div>
                 </div>
@@ -188,7 +214,8 @@
                         width="100%" height="300px">
                     <div card="card-body">
                         <h5 class="card-title">Dr. J Doe</h5>
-                        <p class="card-text">Dr. Doe graduated in 2014 from the Orange School of Vterinary Sciences. She
+                        <p class="card-text">Dr. Doe graduated in 2014 from the Orange School of Vterinary Sciences.
+                            She
                             joined the team at Orange Veterinary Hospital shortly thereafter.</p>
                     </div>
                 </div>
@@ -199,15 +226,16 @@
                         width="100%" height="300px">
                     <div card="card-body">
                         <h5 class="card-title">Dr. A Smith</h5>
-                        <p class="card-text">Dr. Smith, the newest addition to the Orange team, joined in April 2020.
+                        <p class="card-text">Dr. Smith, the newest addition to the Orange team, joined in April
+                            2020.
                         </p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="container-fluid mt-4">
-        <h3>Frequently Asked Questions</h3>
+    <div class="container-fluid mt-4 section" id="faq">
+        <h3><i class="bi-question-diamond me-2"></i>Frequently Asked Questions</h3>
         <div class="divider"></div>
         <div class="accordion" id="accordionExample">
             <div class="accordion-item">
@@ -236,7 +264,8 @@
                     data-bs-parent="#accordionExample">
                     <div class="accordion-body">
                         The health, safety, and well-being of our customers, staff, and pets are of the utmost
-                        importance to us. This is why we have heavily invested in creating a safe environment for all.
+                        importance to us. This is why we have heavily invested in creating a safe environment for
+                        all.
                         The changes include:
                         <ul>
                             <li>A brand-new, $15,000 ventilation system</li>
@@ -256,14 +285,15 @@
                 <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
                     data-bs-parent="#accordionExample">
                     <div class="accordion-body">
-                        Please fill out our <a href="#form">contact form</a>. We will respond within 2 business days.
+                        Please fill out our <a href="#form">contact form</a>. We will respond within 2 business
+                        days.
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="container-fluid mt-4">
-        <h3>Contact & Hours</h3>
+    <div class="container-fluid mt-4 section" id="contact">
+        <h3><i class="bi-info-circle me-2"></i>Contact & Hours</h3>
         <div class="divider"></div>
         <div class="row">
             <div class="col-xl-5">

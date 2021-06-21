@@ -59,3 +59,22 @@ h3 {
 .accordion-button:focus {
     background-color: rgba(255, 166, 0, 0.527) !important;
 }
+
+#nav-links {
+    background-color: rgb(245, 185, 73) !important;
+    height: 50px;
+}
+
+#services::before, #team::before, #faq::before, #contact::before { 
+    display: block; 
+    content: " "; 
+    margin-top: -50px; 
+    height: 50px; 
+    visibility: hidden; 
+    pointer-events: none;
+}
+
+.section {
+    padding-left: 0;
+    padding-right: 0;
+}
