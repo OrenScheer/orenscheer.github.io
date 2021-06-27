@@ -2808,6 +2808,7 @@ textarea.form-control-lg {
   margin-top: 0.25rem;
   font-size: 0.875em;
   color: #dc3545;
+  margin-bottom: 0px;
 }
 
 .invalid-tooltip {

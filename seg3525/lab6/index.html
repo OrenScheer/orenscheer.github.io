@@ -11,10 +11,13 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Barlow">
     <link rel="shortcut icon" type="image/png" href="images/logo.png">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="/styles/jquery-ui.min.css">
+    <link rel="stylesheet" href="/styles/jquery-ui.structure.min.css">
+    <link rel="stylesheet" href="styles/jquery-ui.theme.min.css">
+    <script src="scripts/jquery-ui.min.js"></script>
     <link href="styles/bootstrap.css" rel="stylesheet" type="text/css">
     <link href="styles/style.css" rel="stylesheet" type="text/css">
+    <link href="styles/jquery.timepicker.min.css" rel="stylesheet" type="text/css">
     <title>Orange Vet</title>
 </head>
 
@@ -28,29 +31,22 @@
             </a>
         </div>
         <div class="col-xl-6">
-            <p class="fst-italic d-inline">"Located in the heart of Barrhaven - fast, friendly, and always
-                prepared!"<br>-Jennifer A.</p>
-            <i class="bi bi-star-fill ms-3"></i>
-            <i class="bi bi-star-fill"></i>
-            <i class="bi bi-star-fill"></i>
-            <i class="bi bi-star-fill"></i>
-            <i class="bi bi-star-fill"></i>
         </div>
     </nav>
     <div class="justify-content-end sticky-top bg-light d-flex   align-items-center container-fluid section"
         id="nav-links">
         <ul class="nav">
             <li class="nav-item">
-                <a class="nav-link" href="#services">Services</a>
+                <a class="nav-link" href="#services"><i class="bi-clipboard-plus me-2"></i>Services</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#team">Team</a>
+                <a class="nav-link" href="#team"><i class="bi-people me-2"></i>Team</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#faq">FAQ</a>
+                <a class="nav-link" href="#faq"><i class="bi-question-diamond me-2"></i>FAQ</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#contact">Contact & Hours</a>
+                <a class="nav-link" href="#contact"><i class="bi-info-circle me-2"></i>Contact & Hours</a>
             </li>
         </ul>
     </div>
@@ -67,7 +63,7 @@
     <p class="container-fluid mt-3 section">Located in Barrhaven at Strandherd & Greenbank, we have been proudly serving
         families and their pets since
         2010.</p>
-    <div class="container-fluid mt-3 section" id="services">
+    <div class="container-fluid mt-5 section" id="services">
         <h3><i class="bi-clipboard-plus me-2"></i>Services</h3>
         <div class="divider"></div>
         <div class="row">
@@ -79,7 +75,7 @@
                             will be
                             addressed.</p>
                         <button type="button" class="btn m-1" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal">Book</button>
+                            data-bs-target="#bookModal">Book</button>
                     </div>
                 </div>
             </div>
@@ -90,7 +86,7 @@
                         <p class="card-text">Just like humans, pets need vaccines against common ailments to stay
                             healthy.</p>
                         <button type="button" class="btn m-1" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal">Book</button>
+                            data-bs-target="#bookModal">Book</button>
                     </div>
                 </div>
             </div>
@@ -102,7 +98,7 @@
                             the
                             business.</p>
                         <button type="button" class="btn m-1" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal">Book</button>
+                            data-bs-target="#bookModal">Book</button>
                     </div>
                 </div>
             </div>
@@ -113,7 +109,7 @@
                         <p class="card-text">The health of your pet's teeth are a very important part of their
                             well-being.</p>
                         <button type="button" class="btn m-1" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal">Book</button>
+                            data-bs-target="#bookModal">Book</button>
                     </div>
                 </div>
             </div>
@@ -125,7 +121,7 @@
                             bottom of
                             it.</p>
                         <button type="button" class="btn m-1" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal">Book</button>
+                            data-bs-target="#bookModal">Book</button>
                     </div>
                 </div>
             </div>
@@ -137,7 +133,7 @@
                             services.
                         </p>
                         <button type="button" class="btn m-1" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal">Book</button>
+                            data-bs-target="#bookModal">Book</button>
                     </div>
                 </div>
             </div>
@@ -145,21 +141,23 @@
     </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="bookModal" tabindex="-1" aria-labelledby="bookModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">To book, please enter your details.</h5>
+                    <h5 class="modal-title" id="bookModalLabel">To book, please enter your details.</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <label for="name" class="form-label mt-1">Full Name</label>
+                <form class="modal-body" id="book-form">
+                    <label for="name" class="form-label mt-2">Full Name</label>
                     <input type="text" class="form-control" id="name" required>
-                    <label for="email" class="form-label mt-1" required>Email Address</label>
-                    <input type="email" class="form-control" id="email" required>
-                    <label for="phone" class="form-label mt-1">Phone Number</label>
-                    <input type="tel" class="form-control" id="phone" required>
-                    <label for="expert" class="form-label mt-1">Veterinarian</label>
+                    <label for="email" class="form-label mt-2">Email Address</label>
+                    <input type="email" class="form-control" id="email" placeholder="email@example.com" required>
+                    <label for="phone" class="form-label mt-2">Phone Number</label>
+                    <input type="tel" class="form-control phone" placeholder="(555)-555-5555" required>
+                    <p class="invalid-feedback" id="phone-invalid">Please enter your phone number in the format
+                        (555)-555-5555.</p>
+                    <label for="expert" class="form-label mt-2">Veterinarian</label>
                     <select class="form-select" id="expert">
                         <option selected>No preference</option>
                         <option value="Rinary">Dr. Rinary</option>
@@ -168,21 +166,42 @@
                         <option value="Smith">Dr. Smith</option>
                     </select>
                     <label for="date" class="form-label mt-1">Date</label>
-                    <input type="date" id="date" class="form-control" required>
+                    <input type="text" id="datepicker" class="form-control" required>
                     <label for="time" class="form-label mt-1">Time</label>
-                    <input type="time" id="time" class="form-control">
+                    <input id="timepicker" class="form-control" required>
                     <label for="credit card" class="form-label mt-1">Credit
                         Card<i class="bi-credit-card ms-2"></i></label>
-                    <input type="text" id="credit card" class="form-control">
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn">Book</button>
+                    <input type="text" id="credit card" class="form-control" required>
+                </form>
+                <div class="modal-footer d-flex">
+                    <p id="book-form-error"></p>
+                    <button type="submit" form="book-form" class="btn" id="book-form-submit">Book</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="container-fluid mt-3 section" id="team">
+    <div class=" modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmationModalLabel">Thanks for booking!</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body d-flex flex-column align-items-center" id="book-form">
+                    <i class="bi-check-circle" id="check"></i>
+                    <p id="confirmation-text"></p>
+                    <p id="confirmation-email"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid mt-5 section" id="team">
         <h3><i class="bi-people me-2"></i>Meet Our Team</h3>
         <div class="divider"></div>
         <div class="row">
@@ -204,7 +223,8 @@
                         width="100%" height="300px">
                     <div card="card-body">
                         <h5 class="card-title">Dr. E C Animal</h5>
-                        <p class="card-text">Dr. Animal is a founding partner of Orange Veterinary Hospital.</p>
+                        <p class="card-text">Dr. Animal is a founding partner of Orange Veterinary Hospital.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -214,7 +234,8 @@
                         width="100%" height="300px">
                     <div card="card-body">
                         <h5 class="card-title">Dr. J Doe</h5>
-                        <p class="card-text">Dr. Doe graduated in 2014 from the Orange School of Vterinary Sciences.
+                        <p class="card-text">Dr. Doe graduated in 2014 from the Orange School of Vterinary
+                            Sciences.
                             She
                             joined the team at Orange Veterinary Hospital shortly thereafter.</p>
                     </div>
@@ -226,7 +247,8 @@
                         width="100%" height="300px">
                     <div card="card-body">
                         <h5 class="card-title">Dr. A Smith</h5>
-                        <p class="card-text">Dr. Smith, the newest addition to the Orange team, joined in April
+                        <p class="card-text">Dr. Smith, the newest addition to the Orange team, joined in
+                            April
                             2020.
                         </p>
                     </div>
@@ -234,7 +256,7 @@
             </div>
         </div>
     </div>
-    <div class="container-fluid mt-4 section" id="faq">
+    <div class="container-fluid mt-5 section" id="faq">
         <h3><i class="bi-question-diamond me-2"></i>Frequently Asked Questions</h3>
         <div class="divider"></div>
         <div class="accordion" id="accordionExample">
@@ -248,7 +270,8 @@
                 <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
                     data-bs-parent="#accordionExample">
                     <div class="accordion-body">
-                        Unfortunately, due to the pandemic, we are closed for walk-ins at this time. Please book an
+                        Unfortunately, due to the pandemic, we are closed for walk-ins at this time. Please
+                        book an
                         appointment instead.
                     </div>
                 </div>
@@ -263,8 +286,10 @@
                 <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
                     data-bs-parent="#accordionExample">
                     <div class="accordion-body">
-                        The health, safety, and well-being of our customers, staff, and pets are of the utmost
-                        importance to us. This is why we have heavily invested in creating a safe environment for
+                        The health, safety, and well-being of our customers, staff, and pets are of the
+                        utmost
+                        importance to us. This is why we have heavily invested in creating a safe
+                        environment for
                         all.
                         The changes include:
                         <ul>
@@ -285,14 +310,15 @@
                 <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
                     data-bs-parent="#accordionExample">
                     <div class="accordion-body">
-                        Please fill out our <a href="#form">contact form</a>. We will respond within 2 business
+                        Please fill out our <a href="#form">contact form</a>. We will respond within 2
+                        business
                         days.
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="container-fluid mt-4 section" id="contact">
+    <div class="container-fluid mt-5 section" id="contact">
         <h3><i class="bi-info-circle me-2"></i>Contact & Hours</h3>
         <div class="divider"></div>
         <div class="row">
@@ -312,6 +338,16 @@
                 </a><br>
                 <i class="bi-telephone"></i>
                 <address class="d-inline">613-321-7213</address>
+                <div class="mt-3">
+                    <p class="fst-italic d-inline">"Located in the heart of Barrhaven - fast, friendly, and
+                        always
+                        prepared!"<br>-Jennifer A.</p>
+                    <i class="bi bi-star-fill ms-3"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                </div>
                 <h4 class="mt-4">Hours</h4>
                 <div class="row">
                     <div class="col">
@@ -366,7 +402,7 @@
                         Sunday
                     </div>
                     <div class="col text-end">
-                        10:00-15:00
+                        Closed
                     </div>
                 </div>
             </div>
@@ -375,9 +411,9 @@
                     <label for="name" class="form-label mt-1" required>Full Name</label>
                     <input type="text" class="form-control" id="name">
                     <label for="email" class="form-label mt-1">Email Address</label>
-                    <input type="email" class="form-control" id="email" required>
+                    <input type="email" class="form-control" id="email" placeholder="email@example.com" required>
                     <label for="phone" class="form-label mt-1">Phone Number</label>
-                    <input type="tel" class="form-control" id="phone">
+                    <input type="tel" class="form-control phone" placeholder="(555)-555-5555" required>
                     <label for="question" class="form-label mt-1">Question/Concern/Feedback</label>
                     <textarea id="question" class="form-control" rows="5"></textarea>
                     <button type="submit" class="btn mt-3">Submit</button>
@@ -391,6 +427,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
         crossorigin="anonymous"></script>
+    <script src="scripts/jquery.timepicker.min.js"></script>
 </body>
 
 </html>
