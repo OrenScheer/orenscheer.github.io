@@ -66,8 +66,8 @@
     <div class="container-fluid mt-5 section" id="services">
         <h3><i class="bi-clipboard-plus me-2"></i>Services</h3>
         <div class="divider"></div>
-        <div class="row">
-            <div class="col-md-2 d-flex justify-content-center">
+        <div class="row mt-4">
+            <div class="col-md-4 d-flex justify-content-center">
                 <div class="card border-0">
                     <div card="card-body">
                         <h4 clas="card-title">Annual checkup</h4>
@@ -79,7 +79,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-2 d-flex justify-content-center">
+            <div class="col-md-4 d-flex justify-content-center">
                 <div class="card border-0">
                     <div card="card-body">
                         <h4 class="card-title">Vaccinations</h4>
@@ -90,7 +90,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-2 d-flex justify-content-center">
+            <div class="col-md-4 d-flex justify-content-center">
                 <div class="card border-0">
                     <div card="card-body">
                         <h4 class="card-title">Surgery</h4>
@@ -102,7 +102,9 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-2 d-flex justify-content-center">
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-4 d-flex justify-content-center">
                 <div class="card border-0">
                     <div card="card-body">
                         <h4 class="card-title">Dentistry</h4>
@@ -113,7 +115,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-2 d-flex justify-content-center">
+            <div class="col-md-4 d-flex justify-content-center">
                 <div class="card border-0">
                     <div card="card-body">
                         <h4 class="card-title">Diagnostics</h4>
@@ -125,7 +127,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-2 d-flex justify-content-center">
+            <div class="col-md-4     d-flex justify-content-center">
                 <div class="card border-0">
                     <div card="card-body">
                         <h4 class="card-title">Grooming</h4>
@@ -153,11 +155,11 @@
                     <input type="text" class="form-control required-simple" id="name">
                     <p class="invalid-feedback" id="name-invalid">Please enter your full name.</p>
                     <label for="email" class="form-label mt-2">Email Address</label>
-                    <input type="text" class="form-control email" placeholder="email@example.com">
+                    <input type="text" class="form-control required-simple" id="email" placeholder="email@example.com">
                     <p class="invalid-feedback" id="email-invalid">Please enter your email in the format
                         email@example.com</p>
                     <label for="phone" class="form-label mt-2">Phone Number</label>
-                    <input type="text" class="form-control phone" placeholder="(555)-555-5555">
+                    <input type="text" class="form-control required-simple" id="phone" placeholder="(555)-555-5555">
                     <p class="invalid-feedback" id="phone-invalid">Please enter your phone number in the format
                         (555)-555-5555</p>
                     <label for="expert" class="form-label mt-2">Veterinarian</label>
@@ -180,7 +182,8 @@
                         data-bs-placement="bottom" title="In case of a no-show, you will be charged $20."></i>
                     <div class="input-group credit-card-input">
                         <span class="input-group-text" id="basic-addon1"><i class="bi-credit-card"></i></span>
-                        <input type="text" id="credit-card" class="form-control" placeholder="5555 5555 5555 5555">
+                        <input type="text" id="credit-card" class="form-control required-simple"
+                            placeholder="5555 5555 5555 5555">
                     </div>
                     <p class="invalid-feedback" id="credit-card-invalid">Please enter your credit card number in
                         the
@@ -217,7 +220,7 @@
     <div class="container-fluid mt-5 section" id="team">
         <h3><i class="bi-people me-2"></i>Meet Our Team</h3>
         <div class="divider"></div>
-        <div class="row">
+        <div class="row mt-4">
             <div class="col-md-3 d-flex justify-content-center">
                 <div class="card border-0">
                     <img class="card-image-top rounded-circle staff" src="images/vet1.jpg" alt="Dr.V T Rinary"
@@ -272,7 +275,7 @@
     <div class="container-fluid mt-5 section" id="faq">
         <h3><i class="bi-question-diamond me-2"></i>Frequently Asked Questions</h3>
         <div class="divider"></div>
-        <div class="accordion" id="accordionExample">
+        <div class="accordion mt-4" id="accordionExample">
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingOne">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -334,7 +337,7 @@
     <div class="container-fluid mt-5 section" id="contact">
         <h3><i class="bi-info-circle me-2"></i>Contact & Hours</h3>
         <div class="divider"></div>
-        <div class="row">
+        <div class="row mt-4">
             <div class="col-xl-5">
                 <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2103.059923052915!2d-75.74490178221811!3d45.270123404475626!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4ccdfcddcf910d03%3A0x41bf9f05716f608c!2s50%20Marketplace%20Ave%2C%20Nepean%2C%20ON%20K2J%205G4!5e0!3m2!1sen!2sca!4v1623617523619!5m2!1sen!2sca"
@@ -420,16 +423,27 @@
                 </div>
             </div>
             <div class="col-xl-4">
-                <form id="form">
-                    <label for="contact-name" class="form-label mt-1" required>Full Name</label>
-                    <input type="text" class="form-control" id="contact-name">
-                    <label for="email" class="form-label mt-1">Email Address</label>
-                    <input type="email" class="form-control email" placeholder="email@example.com" required>
-                    <label for="phone" class="form-label mt-1">Phone Number</label>
-                    <input type="tel" class="form-control phone" placeholder="(555)-555-5555" required>
+                <form id="contact-form">
+                    <label for="contact-name" class="form-label mt-1">Full Name</label>
+                    <input type="text" class="form-control required-simple" id="contact-name">
+                    <label for="contact-email" class="form-label mt-1">Email Address</label>
+                    <input type="text" class="form-control required-simple" id="contact-email"
+                        placeholder="email@example.com">
+                    <p class="invalid-feedback" id="contact-email-invalid">Please enter your email in the format
+                        email@example.com</p>
+                    <label for="contact-phone" class="form-label mt-1">Phone Number</label>
+                    <input type="text" class="form-control required-simple" id="contact-phone"
+                        placeholder="(555)-555-5555">
+                    <p class="invalid-feedback" id="contact-phone-invalid">Please enter your phone number in the format
+                        (555)-555-5555</p>
                     <label for="question" class="form-label mt-1">Question/Concern/Feedback</label>
-                    <textarea id="question" class="form-control" rows="5"></textarea>
-                    <button type="submit" class="btn mt-3">Submit</button>
+                    <textarea id="question" class="form-control required-simple" rows="5"></textarea>
+                    <p class="invalid-feedback" id="question-invalid">Please add something.</p>
+                    <div class="d-flex flex-row align-items-center mt-3">
+                        <button type="submit" form="contact-form" class="btn" id="contact-form-submit">Submit</button>
+                        <p id="contact-form-error" class="ms-1 mt-2 align-self-center"></p>
+                        <p id="contact-form-submitted" class="ms-1 mt-2"></p>
+                    </div>
                     <div class="form-text">We will respond within 2 business days.</div>
                 </form>
             </div>

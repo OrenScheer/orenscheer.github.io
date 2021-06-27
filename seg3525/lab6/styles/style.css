@@ -64,6 +64,7 @@ h3 {
     background-color: rgb(245, 185, 73) !important;
     height: 50px;
     margin-top: -2px;
+    font-size: 20px;
 }
 
 #services::before, #team::before, #faq::before, #contact::before { 
@@ -95,6 +96,10 @@ option:hover {
     box-shadow: 0 0 0 0.25rem rgba(255, 0, 0, 0.25);
 }
 
-#book-form-error {
+#book-form-error, #contact-form-error {
     color: #dc3545;
+}
+
+#contact-form-submitted {
+    color: #198754;
 }

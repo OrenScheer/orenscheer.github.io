@@ -29,16 +29,16 @@ $(document).ready(() => {
         "maxTime": "5:00pm",
         "listWidth": 1,
     }).on("timeFormatError", function () {
-        addError(false, "timepicker")
+        addError("timepicker")
     }).on("timeRangeError", function () {
-        addError(false, "timepicker");
+        addError("timepicker");
     }).on("changeTime", function () {
-        removeError(false, "timepicker");
+        removeError("timepicker");
     }).change(function () {
         if ($(this).val()) {
-            removeError(false, "timepicker");
+            removeError("timepicker");
         } else {
-            addError(false, "timepicker");
+            addError("timepicker");
         }
     })
 
@@ -69,22 +69,22 @@ $(document).ready(() => {
             if ($("#book-form .required-simple").val() == "") {
                 $("#book-form-error").show().text("You have errors. Please correct them before submitting.");
                 if ($("#book-form #name").val() === "") {
-                    addError(false, "name");
+                    addError("name");
                 }
                 if ($("#book-form #datepicker").val() === "") {
-                    addError(false, "datepicker");
+                    addError("datepicker");
                 }
                 if ($("#book-form #timepicker").val() === "") {
-                    addError(false, "timepicker");
+                    addError("timepicker");
                 }
-                if ($("#book-form .email").val() === "") {
-                    addError(true, "email");
+                if ($("#book-form #email").val() === "") {
+                    addError("email");
                 }
-                if ($("#book-form .phone").val() === "") {
-                    addError(true, "phone");
+                if ($("#book-form #phone").val() === "") {
+                    addError("phone");
                 }
                 if ($("#book-form #credit-card").val() === "") {
-                    addError(false, "credit-card");
+                    addError("credit-card");
                 }
                 return;
             } else if ($("#book-form input").hasClass("form-control-invalid")) {
@@ -94,46 +94,112 @@ $(document).ready(() => {
             $("#confirmationModal").modal("toggle");
         });
 
+    $("#contact-form").change(function () {
+        if ($("#contact-form input").hasClass("form-control-invalid")) {
+            $("#contact-form-error").show().text("You have errors. Please correct them before submitting.");
+        } else {
+            $("#book-form-error").hide();
+        }
+    })
+        .submit(function () {
+            if ($("#contact-form .required-simple").val() == "") {
+                $("#contact-form-error").show().text("You have errors. Please correct them before submitting.");
+                if ($("#contact-form #contact-email").val() === "") {
+                    addError("contact-email");
+                }
+                if ($("#contact-form #question").val() === "") {
+                    addError("question");
+                }
+                if ($("#contact-form #contact-phone").val() === "") {
+                    addError("contact-phone");
+                }
+                if ($("#contact-form #contact-name").val() === "") {
+                    addError("contact-name");
+                }
+                return;
+            } else if ($("#contact-form input").hasClass("form-control-invalid")) {
+                return;
+            }
+            $("#contact-form").trigger("reset");
+            $("#contact-form-error").hide();
+            $("#contact-form-submitted").show().text("Thanks for getting in touch! We will respond shortly.");
+        });
+
     $("#name").change(function () {
         if ($(this).val()) {
-            removeError(false, "name");
+            removeError("name");
         } else {
-            addError(false, "name");
+            addError("name");
         }
     });
 
+    $("#contact-name").change(function () {
+        if ($(this).val()) {
+            removeError("contact-name");
+        } else {
+            addError("contact-name");
+        }
+    });
+
+
     $("#datepicker").change(function () {
         if ($(this).val()) {
-            removeError(false, "datepicker");
+            removeError("datepicker");
         } else {
-            addError(false, "datepicker");
+            addError("datepicker");
         }
     })
 
-    $(".phone").change(function () {
+    $("#question").change(function () {
+        if ($(this).val()) {
+            removeError("question");
+        } else {
+            addError("question");
+        }
+    })
+
+    $("#phone").change(function () {
         let reg = /^\(\d{3}\)-\d{3}-\d{4}$/
         if (!reg.test($(this).val())) {
-            addError(true, "phone");
+            addError("phone");
         } else {
-            removeError(true, "phone");
+            removeError("phone");
         }
     })
 
-    $(".email").change(function () {
+    $("#contact-phone").change(function () {
+        let reg = /^\(\d{3}\)-\d{3}-\d{4}$/
+        if (!reg.test($(this).val())) {
+            addError("contact-phone");
+        } else {
+            removeError("contact-phone");
+        }
+    })
+
+    $("#email").change(function () {
         let reg = /^.+@.+\..+$/
         if (!reg.test($(this).val())) {
-            addError(true, "email");
+            addError("email");
         } else {
-            removeError(true, "email");
+            removeError("email");
+        }
+    })
+
+    $("#contact-email").change(function () {
+        let reg = /^.+@.+\..+$/
+        if (!reg.test($(this).val())) {
+            addError("contact-email");
+        } else {
+            removeError("contact-email");
         }
     })
 
     $("#credit-card").change(function () {
         let reg = /^\d{4} \d{4} \d{4} \d{4}$/
         if (!reg.test($(this).val())) {
-            addError(false, "credit-card");
+            addError("credit-card");
         } else {
-            removeError(false, "credit-card");
+            removeError("credit-card");
         }
     })
 
@@ -145,26 +211,14 @@ $(document).ready(() => {
         $(this).addClass("bi-question-circle");
     });
 
-    function addError(isClass, name) {
-        let sel;
-        if (isClass) {
-            sel = `#book-form .${name}`;
-        } else {
-            sel = `#book-form #${name}`;
-        }
-        $(sel).addClass("form-control-invalid");
-        $(`#${name}-invalid`).show();
+    function addError(id) {
+        $(`#${id}`).addClass("form-control-invalid");
+        $(`#${id}-invalid`).show();
     }
 
-    function removeError(isClass, name) {
-        let sel;
-        if (isClass) {
-            sel = `#book-form .${name}`;
-        } else {
-            sel = `#book-form #${name}`;
-        }
-        $(sel).removeClass("form-control-invalid");
-        $(`#${name}-invalid`).hide();
+    function removeError(id) {
+        $(`#${id}`).removeClass("form-control-invalid");
+        $(`#${id}-invalid`).hide();
     }
 
     function removeInvalidFeedback() {
