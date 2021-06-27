@@ -150,13 +150,16 @@
                 </div>
                 <form class="modal-body" id="book-form">
                     <label for="name" class="form-label mt-2">Full Name</label>
-                    <input type="text" class="form-control" id="name" required>
+                    <input type="text" class="form-control required-simple" id="name">
+                    <p class="invalid-feedback" id="name-invalid">Please enter your full name.</p>
                     <label for="email" class="form-label mt-2">Email Address</label>
-                    <input type="email" class="form-control" id="email" placeholder="email@example.com" required>
+                    <input type="text" class="form-control email" placeholder="email@example.com">
+                    <p class="invalid-feedback" id="email-invalid">Please enter your email in the format
+                        email@example.com</p>
                     <label for="phone" class="form-label mt-2">Phone Number</label>
-                    <input type="tel" class="form-control phone" placeholder="(555)-555-5555" required>
+                    <input type="text" class="form-control phone" placeholder="(555)-555-5555">
                     <p class="invalid-feedback" id="phone-invalid">Please enter your phone number in the format
-                        (555)-555-5555.</p>
+                        (555)-555-5555</p>
                     <label for="expert" class="form-label mt-2">Veterinarian</label>
                     <select class="form-select" id="expert">
                         <option selected>No preference</option>
@@ -165,13 +168,23 @@
                         <option value="Doe">Dr. Doe</option>
                         <option value="Smith">Dr. Smith</option>
                     </select>
-                    <label for="date" class="form-label mt-1">Date</label>
-                    <input type="text" id="datepicker" class="form-control" required>
-                    <label for="time" class="form-label mt-1">Time</label>
-                    <input id="timepicker" class="form-control" required>
-                    <label for="credit card" class="form-label mt-1">Credit
-                        Card<i class="bi-credit-card ms-2"></i></label>
-                    <input type="text" id="credit card" class="form-control" required>
+                    <label for="datepicker" class="form-label mt-1">Date</label>
+                    <input type="text" id="datepicker" class="form-control required-simple">
+                    <p class="invalid-feedback" id="datepicker-invalid">Please select a valid date.</p>
+                    <label for="timepicker" class="form-label mt-1">Time</label>
+                    <input id="timepicker" class="form-control required-simple">
+                    <p class="invalid-feedback" id="timepicker-invalid">Please select a valid time.</p>
+                    <label for="credit-card" class="form-label mt-1">Credit
+                        Card</label>
+                    <i class="bi-question-circle ms-1" id="credit-card-info" data-bs-toggle="tooltip"
+                        data-bs-placement="bottom" title="In case of a no-show, you will be charged $20."></i>
+                    <div class="input-group credit-card-input">
+                        <span class="input-group-text" id="basic-addon1"><i class="bi-credit-card"></i></span>
+                        <input type="text" id="credit-card" class="form-control" placeholder="5555 5555 5555 5555">
+                    </div>
+                    <p class="invalid-feedback" id="credit-card-invalid">Please enter your credit card number in
+                        the
+                        format 5555 5555 5555 5555</p>
                 </form>
                 <div class="modal-footer d-flex">
                     <p id="book-form-error"></p>
@@ -408,10 +421,10 @@
             </div>
             <div class="col-xl-4">
                 <form id="form">
-                    <label for="name" class="form-label mt-1" required>Full Name</label>
-                    <input type="text" class="form-control" id="name">
+                    <label for="contact-name" class="form-label mt-1" required>Full Name</label>
+                    <input type="text" class="form-control" id="contact-name">
                     <label for="email" class="form-label mt-1">Email Address</label>
-                    <input type="email" class="form-control" id="email" placeholder="email@example.com" required>
+                    <input type="email" class="form-control email" placeholder="email@example.com" required>
                     <label for="phone" class="form-label mt-1">Phone Number</label>
                     <input type="tel" class="form-control phone" placeholder="(555)-555-5555" required>
                     <label for="question" class="form-label mt-1">Question/Concern/Feedback</label>
