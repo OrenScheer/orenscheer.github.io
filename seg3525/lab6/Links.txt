@@ -1,7 +1,5 @@
 https://css-tricks.com/hash-tag-links-padding/
-https://www.jonthornton.com/jquery-timepicker/
 https://stackoverflow.com/questions/21151044/how-to-clear-all-input-fields-in-bootstrap-modal-when-clicking-data-dismiss-butt/40973612
-
---potentially?:
-https://stackoverflow.com/questions/20791374/jquery-check-if-element-is-visible-in-viewport
-https://stackoverflow.com/questions/9097501/show-div-when-scroll-position
+https://www.jonthornton.com/jquery-timepicker/
+jQuery UI
+Bootstrap

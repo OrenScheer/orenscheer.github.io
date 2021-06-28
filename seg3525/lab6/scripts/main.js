@@ -52,12 +52,6 @@ $(document).ready(() => {
         $("#datepicker").val("").change();
     });
 
-    $("#book-form-submit").click(function () {
-        $("#confirmationModalLabel").text(`Thanks for booking, ${$("#name").val().split(" ")[0]}!`);
-        $("#confirmation-text").text(`Your appointment has been booked for ${$("#datepicker").val()} at ${$("#timepicker").val()}.`);
-        $("#confirmation-email").text(`We have sent a confirmation email to ${$("#book-form .email").val()}.`);
-    });
-
     $("#book-form").change(function () {
         if ($("#book-form input").hasClass("form-control-invalid")) {
             $("#book-form-error").show().text("You have errors. Please correct them before submitting.");
@@ -66,35 +60,39 @@ $(document).ready(() => {
         }
     })
         .submit(function () {
-            if ($("#book-form .required-simple").val() == "") {
+            if ($("#book-form .required-simple").toArray().some(elem => !elem.value)) {
                 $("#book-form-error").show().text("You have errors. Please correct them before submitting.");
-                if ($("#book-form #name").val() === "") {
+                if (!$("#book-form #name").val()) {
                     addError("name");
                 }
-                if ($("#book-form #datepicker").val() === "") {
+                if (!$("#book-form #datepicker").val()) {
                     addError("datepicker");
                 }
-                if ($("#book-form #timepicker").val() === "") {
+                if (!$("#book-form #timepicker").val()) {
                     addError("timepicker");
                 }
-                if ($("#book-form #email").val() === "") {
+                if (!$("#book-form #email").val()) {
                     addError("email");
                 }
-                if ($("#book-form #phone").val() === "") {
+                if (!$("#book-form #phone").val()) {
                     addError("phone");
                 }
-                if ($("#book-form #credit-card").val() === "") {
+                if (!$("#book-form #credit-card").val()) {
                     addError("credit-card");
                 }
                 return;
             } else if ($("#book-form input").hasClass("form-control-invalid")) {
                 return;
             }
+            $("#confirmationModalLabel").text(`Thanks for booking, ${$("#name").val().split(" ")[0]}!`);
+            $("#confirmation-text").text(`Your appointment has been booked for ${$("#datepicker").val()} at ${$("#timepicker").val()}.`);
+            $("#confirmation-email").text(`We have sent a confirmation email to ${$("#book-form #email").val()}.`);
             $("#bookModal").modal("hide");
             $("#confirmationModal").modal("toggle");
         });
 
     $("#contact-form").change(function () {
+        $("#contact-form-submitted").hide();
         if ($("#contact-form input").hasClass("form-control-invalid")) {
             $("#contact-form-error").show().text("You have errors. Please correct them before submitting.");
         } else {
@@ -102,18 +100,18 @@ $(document).ready(() => {
         }
     })
         .submit(function () {
-            if ($("#contact-form .required-simple").val() == "") {
+            if ($("#contact-form .required-simple").toArray().some(elem => !elem.value)) {
                 $("#contact-form-error").show().text("You have errors. Please correct them before submitting.");
-                if ($("#contact-form #contact-email").val() === "") {
+                if (!$("#contact-form #contact-email").val()) {
                     addError("contact-email");
                 }
-                if ($("#contact-form #question").val() === "") {
+                if (!$("#contact-form #question").val()) {
                     addError("question");
                 }
-                if ($("#contact-form #contact-phone").val() === "") {
+                if (!$("#contact-form #contact-phone").val()) {
                     addError("contact-phone");
                 }
-                if ($("#contact-form #contact-name").val() === "") {
+                if (!$("#contact-form #contact-name").val()) {
                     addError("contact-name");
                 }
                 return;
@@ -211,6 +209,16 @@ $(document).ready(() => {
         $(this).addClass("bi-question-circle");
     });
 
+    $("#datepicker-info").tooltip().hover(function () {
+        $(this).removeClass("bi-question-circle");
+        $(this).addClass("bi-question-circle-fill");
+    }, function () {
+        $(this).removeClass("bi-question-circle-fill");
+        $(this).addClass("bi-question-circle");
+    });
+
+    $("#mini-logo").css("visibility", "hidden");
+
     function addError(id) {
         $(`#${id}`).addClass("form-control-invalid");
         $(`#${id}-invalid`).show();
@@ -225,6 +233,12 @@ $(document).ready(() => {
         $("#book-form .invalid-feedback").hide();
         $("#book-form input").removeClass("form-control-invalid");
         $("#book-form-error").hide();
+    }
+}).scroll(function () {
+    if ($(this).scrollTop() > $("nav").outerHeight(true)) {
+        $("#mini-logo").css("visibility", "visible");
+    } else if ($(this).scrollTop() <= $("nav").outerHeight(true)) {
+        $("#mini-logo").css("visibility", "hidden");
     }
 });
 

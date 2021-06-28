@@ -33,8 +33,9 @@
         <div class="col-xl-6">
         </div>
     </nav>
-    <div class="justify-content-end sticky-top bg-light d-flex   align-items-center container-fluid section"
+    <div class="justify-content-between sticky-top bg-light d-flex align-items-center container-fluid section"
         id="nav-links">
+        <img src="images/logo-black.png" id="mini-logo" height="100%" class="">
         <ul class="nav">
             <li class="nav-item">
                 <a class="nav-link" href="#services"><i class="bi-clipboard-plus me-2"></i>Services</a>
@@ -171,6 +172,8 @@
                         <option value="Smith">Dr. Smith</option>
                     </select>
                     <label for="datepicker" class="form-label mt-1">Date</label>
+                    <i class="bi-question-circle ms-1" id="datepicker-info" data-bs-toggle="tooltip"
+                        data-bs-placement="bottom" title="Each veterinarian has a different weekly schedule."></i>
                     <input type="text" id="datepicker" class="form-control required-simple">
                     <p class="invalid-feedback" id="datepicker-invalid">Please select a valid date.</p>
                     <label for="timepicker" class="form-label mt-1">Time</label>
@@ -222,19 +225,19 @@
         <div class="divider"></div>
         <div class="row mt-4">
             <div class="col-md-3 d-flex justify-content-center">
-                <div class="card border-0">
+                <div class="card border-0 d-flex flex-column">
                     <img class="card-image-top rounded-circle staff" src="images/vet1.jpg" alt="Dr.V T Rinary"
                         width="100%" height="300px">
                     <div card="card-body">
                         <h5 class="card-title">Dr. V T Rinary</h5>
-                        <p class="card-text">Dr. Rinary brings over 25 years of experience in the veterinary
-                            business.
+                        <p class="card-text">Dr. Rinary brings over 25 years of experience in the veterinary industry.
                             He is a founding partner of Orange Veterinary Hospital.</p>
                     </div>
+                    <p class="card-text mt-auto"><strong>Available: </strong>Monday, Wednesday, Friday</p>
                 </div>
             </div>
             <div class="col-md-3 d-flex justify-content-center">
-                <div class="card border-0">
+                <div class="card border-0 d-flex flex-column">
                     <img class="card-image-top rounded-circle staff" src="images/vet2.png" alt="Dr.V T Rinary"
                         width="100%" height="300px">
                     <div card="card-body">
@@ -242,32 +245,31 @@
                         <p class="card-text">Dr. Animal is a founding partner of Orange Veterinary Hospital.
                         </p>
                     </div>
+                    <p class="card-text mt-auto"><strong>Available: </strong>Monday, Thursday, Saturday</p>
                 </div>
             </div>
             <div class="col-md-3 d-flex justify-content-center">
-                <div class="card border-0">
+                <div class="card border-0 d-flex flex-column">
                     <img class="card-image-top rounded-circle staff" src="images/vet3.jpg" alt="Dr.V T Rinary"
                         width="100%" height="300px">
                     <div card="card-body">
                         <h5 class="card-title">Dr. J Doe</h5>
-                        <p class="card-text">Dr. Doe graduated in 2014 from the Orange School of Vterinary
-                            Sciences.
-                            She
+                        <p class="card-text">Dr. Doe graduated in 2014 from the Orange School of Veterinary Sciences.She
                             joined the team at Orange Veterinary Hospital shortly thereafter.</p>
                     </div>
+                    <p class="card-text mt-auto"><strong>Available: </strong>Tuesday, Wednesday, Thursday</p>
                 </div>
             </div>
             <div class="col-md-3 d-flex justify-content-center">
-                <div class="card border-0">
+                <div class="card border-0 d-flex flex-column">
                     <img class="card-image-top rounded-circle staff" src="images/vet4.jpg" alt="Dr.V T Rinary"
                         width="100%" height="300px">
                     <div card="card-body">
                         <h5 class="card-title">Dr. A Smith</h5>
-                        <p class="card-text">Dr. Smith, the newest addition to the Orange team, joined in
-                            April
-                            2020.
+                        <p class="card-text">Dr. Smith, the newest addition to the Orange team, joined in April 2020.
                         </p>
                     </div>
+                    <p class="card-text mt-auto"><strong>Available: </strong>Tuesday, Saturday</p>
                 </div>
             </div>
         </div>

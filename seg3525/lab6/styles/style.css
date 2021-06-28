@@ -64,7 +64,7 @@ h3 {
     background-color: rgb(245, 185, 73) !important;
     height: 50px;
     margin-top: -2px;
-    font-size: 20px;
+    font-size: 24px;
 }
 
 #services::before, #team::before, #faq::before, #contact::before { 
@@ -102,4 +102,8 @@ option:hover {
 
 #contact-form-submitted {
     color: #198754;
+}
+
+.card-body {
+    height: 100%;
 }
