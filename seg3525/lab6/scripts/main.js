@@ -59,7 +59,8 @@ $(document).ready(() => {
             $("#book-form-error").hide();
         }
     })
-        .submit(function () {
+        .submit(function (e) {
+            e.preventDefault();
             if ($("#book-form .required-simple").toArray().some(elem => !elem.value)) {
                 $("#book-form-error").show().text("You have errors. Please correct them before submitting.");
                 if (!$("#book-form #name").val()) {
@@ -99,7 +100,8 @@ $(document).ready(() => {
             $("#book-form-error").hide();
         }
     })
-        .submit(function () {
+        .submit(function (e) {
+            e.preventDefault();
             if ($("#contact-form .required-simple").toArray().some(elem => !elem.value)) {
                 $("#contact-form-error").show().text("You have errors. Please correct them before submitting.");
                 if (!$("#contact-form #contact-email").val()) {
