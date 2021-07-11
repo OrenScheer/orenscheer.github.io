@@ -3,18 +3,40 @@ import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import moment from "moment";
 
-const FlightForm = ({ values, submitButton }) => {
+const FlightForm = ({
+  form,
+  values = {},
+  additionalFields = null,
+  submitButton = null,
+  handleParent = () => {},
+}) => {
   let [departureDisabled, setDepartureDisabled] = useState(
     values.departAnytime
   );
   let [returnDisabled, setReturnDisabled] = useState(values.returnAnytime);
   const history = useHistory();
-  const [form] = Form.useForm();
 
   values.departureDate = values.departureDate
     ? moment(values.departureDate)
     : null;
   values.returnDate = values.returnDate ? moment(values.returnDate) : null;
+
+  const changeFormValues = (valuesChanged) => {
+    if ("departureDate" in valuesChanged) {
+      if (valuesChanged.departureDate >= form.getFieldValue("returnDate")) {
+        form.setFieldsValue({ returnDate: null });
+      }
+    }
+    if ("departAnytime" in valuesChanged) {
+      setDepartureDisabled(form.getFieldValue("departAnytime"));
+      form.setFieldsValue({ departureDate: null });
+    }
+    if ("returnAnytime" in valuesChanged) {
+      setReturnDisabled(form.getFieldValue("returnAnytime"));
+      form.setFieldsValue({ returnDate: null });
+    }
+    handleParent();
+  };
 
   return (
     <Form
@@ -37,14 +59,17 @@ const FlightForm = ({ values, submitButton }) => {
       }}
       form={form}
       initialValues={values}
+      onValuesChange={changeFormValues}
+      // eslint-disable-next-line no-template-curly-in-string
+      validateMessages={{ required: "This field is required." }}
     >
-      <Form.Item name="from" label="From">
+      <Form.Item name="from" label="From" rules={[{ required: true }]}>
         <Select>
           <Select.Option value="Ottawa">Ottawa</Select.Option>
           <Select.Option value="Toronto">Toronto</Select.Option>
         </Select>
       </Form.Item>
-      <Form.Item name="to" label="To">
+      <Form.Item name="to" label="To" rules={[{ required: true }]}>
         <Select>
           <Select.Option value="Rome">Rome</Select.Option>
         </Select>
@@ -57,14 +82,7 @@ const FlightForm = ({ values, submitButton }) => {
             labelAlign="left"
             labelCol={{ span: 9, offset: 1 }}
           >
-            <DatePicker
-              disabled={departureDisabled}
-              onChange={(date) => {
-                if (date >= form.getFieldValue("returnDate")) {
-                  form.setFieldsValue({ returnDate: null });
-                }
-              }}
-            />
+            <DatePicker disabled={departureDisabled} />
           </Form.Item>
         </Col>
         <Col
@@ -75,14 +93,7 @@ const FlightForm = ({ values, submitButton }) => {
           }}
         >
           <Form.Item name="departAnytime" valuePropName="checked">
-            <Checkbox
-              onChange={(e) => {
-                setDepartureDisabled(e.target.checked);
-                form.setFieldsValue({ departureDate: null });
-              }}
-            >
-              Anytime
-            </Checkbox>
+            <Checkbox defaultChecked={values.departAnytime}>Anytime</Checkbox>
           </Form.Item>
         </Col>
       </Row>
@@ -110,18 +121,11 @@ const FlightForm = ({ values, submitButton }) => {
           }}
         >
           <Form.Item name="returnAnytime" valuePropName="checked">
-            <Checkbox
-              onChange={(e) => {
-                setReturnDisabled(e.target.checked);
-                form.setFieldsValue({ returnDate: null });
-              }}
-              defaultChecked={values.returnAnytime}
-            >
-              Anytime
-            </Checkbox>
+            <Checkbox defaultChecked={values.returnAnytime}>Anytime</Checkbox>
           </Form.Item>
         </Col>
       </Row>
+      {additionalFields}
       <Form.Item wrapperCol={{ span: 12, offset: 10 }}>
         {submitButton}
       </Form.Item>

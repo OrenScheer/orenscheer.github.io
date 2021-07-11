@@ -5,10 +5,12 @@ import {
   faPlaneDeparture,
   faSuitcase,
 } from "@fortawesome/free-solid-svg-icons";
+import { Form } from "antd";
 
 const { TabPane } = Tabs;
 
 const Home = () => {
+  const [form] = Form.useForm();
   return (
     <div
       style={{
@@ -49,7 +51,7 @@ const Home = () => {
             key="1"
           >
             <FlightForm
-              values={{}}
+              form={form}
               submitButton={
                 <Button type="primary" htmlType="submit">
                   Search
