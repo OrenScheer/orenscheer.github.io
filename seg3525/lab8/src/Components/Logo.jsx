@@ -13,7 +13,7 @@ const Logo = ({ fontSize }) => {
           }}
         >
           <FontAwesomeIcon icon={faAtlas} style={{ marginRight: "10px" }} />
-          Orange Travel
+          Travel Orange
         </h1>
       </div>
     </Link>

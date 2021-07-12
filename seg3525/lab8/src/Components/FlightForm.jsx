@@ -60,7 +60,6 @@ const FlightForm = ({
       form={form}
       initialValues={values}
       onValuesChange={changeFormValues}
-      // eslint-disable-next-line no-template-curly-in-string
       validateMessages={{ required: "This field is required." }}
     >
       <Form.Item name="from" label="From" rules={[{ required: true }]}>

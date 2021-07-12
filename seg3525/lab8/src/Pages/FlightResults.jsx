@@ -1,13 +1,11 @@
 import Layout from "antd/lib/layout/layout";
-import { useLocation } from "react-router-dom";
-import { Form, Checkbox, Alert, List, Avatar, Button, Select } from "antd";
+import { useHistory, useLocation } from "react-router-dom";
+import { Form, Checkbox, Alert, List, Button, Select } from "antd";
 import { useCallback, useEffect, useState } from "react";
 import FlightForm from "../Components/FlightForm";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlaneSlash } from "@fortawesome/free-solid-svg-icons";
-import AirCanada from "../images/AirCanada.png";
-import AirTransat from "../images/AirTransat.png";
-import Alitalia from "../images/Alitalia.png";
+import Flight from "../Components/Flight";
 
 const { Sider, Content } = Layout;
 
@@ -126,17 +124,13 @@ const sortPriceDescending = (a, b) => {
   return 0;
 };
 
-const logoSources = {
-  "Air Canada": AirCanada,
-  "Air Transat": AirTransat,
-  Alitalia: Alitalia,
-};
-
 const FlightResults = () => {
   const [form] = Form.useForm();
   const [filter] = Form.useForm();
   const [options, setOptions] = useState([]);
   const [results, setResults] = useState([]);
+
+  const history = useHistory();
 
   const sortResults = useCallback(
     (routes, sorter = "priceAscending") => {
@@ -259,7 +253,7 @@ const FlightResults = () => {
           </div>
         )}
         {results.length > 0 && (
-          <div style={{ marginLeft: "20px" }}>
+          <div style={{ marginLeft: "20px", marginRight: "20px" }}>
             <Form
               initialValues={{ sort: "priceAscending" }}
               onValuesChange={(changedValues) => {
@@ -284,35 +278,21 @@ const FlightResults = () => {
               itemLayout="horizontal"
               dataSource={results}
               renderItem={(flight) => (
-                <List.Item>
-                  <List.Item.Meta
-                    avatar={
-                      <Avatar
-                        src={logoSources[flight.airline]}
-                        style={{ marginTop: "8px" }}
-                      />
-                    }
-                    title={
-                      flight.from +
-                      flight.through.map((stop) => " → " + stop).join("") +
-                      " → " +
-                      flight.to
-                    }
-                    description={flight.airline}
-                  />
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                    }}
-                  >
-                    <h1>{`$${flight.price}`}</h1>
-                    <Button style={{ marginLeft: "20px" }} type="primary">
+                <Flight
+                  flight={flight}
+                  button={
+                    <Button
+                      style={{ marginLeft: "20px" }}
+                      type="primary"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        history.push("/bookflight", flight);
+                      }}
+                    >
                       Book
                     </Button>
-                  </div>
-                </List.Item>
+                  }
+                />
               )}
             ></List>
           </div>
