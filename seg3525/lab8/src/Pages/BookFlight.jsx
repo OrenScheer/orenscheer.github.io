@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChevronLeft,
   faQuestionCircle,
+  faCheckCircle,
 } from "@fortawesome/free-solid-svg-icons";
 
 const { Sider, Content } = Layout;
@@ -20,22 +21,20 @@ const BookFlight = () => {
   return (
     <Layout height="500px">
       <Sider
-        width="400px"
+        width="200px"
         theme="light"
         style={{
-          backgroundColor: "#f0f2f5",
           display: "flex",
           flexDirection: "vertical",
           alignItems: "center",
           justifyContent: "center",
-          paddingTop: "20px",
+          paddingTop: "50px",
         }}
       >
         <Steps direction="vertical" current={currentStep}>
           <Step title="Details" />
           <Step title="Payment" />
           <Step title="Review" />
-          <Step title="Confirmation" />
         </Steps>
       </Sider>
       <Content
@@ -186,23 +185,102 @@ const BookFlight = () => {
                 </Form.Item>
               </div>
             )}
-            {currentStep === 2 && <div></div>}
-            {currentStep === 3 && <div></div>}
+            {currentStep === 2 && (
+              <div>
+                <h3>Details</h3>
+                <ul>
+                  <li>
+                    <strong>Email: </strong>
+                    {form.getFieldValue("email")}
+                  </li>
+                  <li>
+                    <strong>Phone: </strong>
+                    {form.getFieldValue("phone")}
+                  </li>
+                  <li>
+                    <strong>Name: </strong>
+                    {`${form.getFieldValue("firstName")} ${form.getFieldValue(
+                      "lastName"
+                    )}`}
+                  </li>
+                  <li>
+                    <strong>Date of Birth: </strong>
+                    {form.getFieldValue("dateOfBirth").format().slice(0, 10)}
+                  </li>
+                  <li>
+                    <strong>Passport No.: </strong>
+                    {form.getFieldValue("passport")}
+                  </li>
+                </ul>
+                <h3>Payment</h3>
+                <ul>
+                  <li>
+                    <strong>Credit Card: </strong>
+                    {`**** **** **** ${form
+                      .getFieldValue("creditCard")
+                      .slice(15, 20)}`}
+                  </li>
+                  <li>
+                    <strong>Expiry: </strong>
+                    {form.getFieldValue("expiry").format().slice(0, 10)}
+                  </li>
+                  <li>
+                    <strong>CVV: </strong>
+                    ***
+                  </li>
+                </ul>
+                <h3>{`Your credit card ending in ${form
+                  .getFieldValue("creditCard")
+                  .slice(15, 20)} will be charged $${
+                  flight.price
+                } at the end of the 24 hour cancellation period.`}</h3>
+              </div>
+            )}
+            {currentStep === 3 && (
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  height: "100%",
+                }}
+              >
+                <FontAwesomeIcon
+                  icon={faCheckCircle}
+                  size="10x"
+                  style={{ color: "green" }}
+                />
+                <h2 style={{ textAlign: "center" }}>
+                  Your booking is complete.
+                  <br />
+                  {`You will receive a confirmation email at ${form.getFieldValue(
+                    "email"
+                  )} shortly.`}
+                </h2>
+                <p>You can cancel within the next 24 hours.</p>
+              </div>
+            )}
             <div>
               <Button
-                type="primary"
+                type="default"
                 onClick={() => setCurrentStep(currentStep - 1)}
                 disabled={currentStep < 1 || currentStep > 2}
               >
                 Previous
               </Button>
               <Button
-                type="primary"
-                onClick={() => setCurrentStep(currentStep + 1)}
+                type={currentStep === 2 ? "primary" : "default"}
+                onClick={() => {
+                  form
+                    .validateFields()
+                    .then(() => setCurrentStep(currentStep + 1))
+                    .catch(() => {});
+                }}
                 disabled={currentStep > 2}
                 style={{ marginLeft: "20px" }}
               >
-                {currentStep < 2 ? "Next" : "Confirm"}
+                {currentStep < 2 ? "Next" : "Book"}
               </Button>
             </div>
           </Form>
