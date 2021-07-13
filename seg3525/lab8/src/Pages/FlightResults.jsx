@@ -2,10 +2,10 @@ import Layout from "antd/lib/layout/layout";
 import { useHistory, useLocation } from "react-router-dom";
 import { Form, Checkbox, Alert, List, Button, Select } from "antd";
 import { useCallback, useEffect, useState } from "react";
-import FlightForm from "../Components/FlightForm";
+import FlightForm from "../components/FlightForm";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlaneSlash } from "@fortawesome/free-solid-svg-icons";
-import Flight from "../Components/Flight";
+import Flight from "../components/Flight";
 
 const { Sider, Content } = Layout;
 
@@ -132,19 +132,15 @@ const FlightResults = () => {
 
   const history = useHistory();
 
-  const sortResults = useCallback(
-    (routes, sorter = "priceAscending") => {
-      console.log(filter.getFieldValue("sort"));
-      let copy = [...routes];
-      if (sorter === "priceAscending") {
-        copy.sort(sortPriceAscending);
-      } else if (sorter === "priceDescending") {
-        copy.sort(sortPriceDescending);
-      }
-      setResults(copy);
-    },
-    [filter]
-  );
+  const sortResults = useCallback((routes, sorter = "priceAscending") => {
+    let copy = [...routes];
+    if (sorter === "priceAscending") {
+      copy.sort(sortPriceAscending);
+    } else if (sorter === "priceDescending") {
+      copy.sort(sortPriceDescending);
+    }
+    setResults(copy);
+  }, []);
 
   useEffect(() => {
     sortResults(

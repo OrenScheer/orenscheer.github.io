@@ -1,8 +1,11 @@
 import { Route, Switch } from "react-router-dom";
-import NotFound from "../Pages/NotFound";
-import Home from "../Pages/Home";
-import FlightResults from "../Pages/FlightResults";
-import BookFlight from "../Pages/BookFlight";
+import NotFound from "../pages/NotFound";
+import Home from "../pages/Home";
+import FlightResults from "../pages/FlightResults";
+import BookFlight from "../pages/BookFlight";
+import Destinations from "../pages/Destinations";
+import DestinationDetails from "../pages/DestinationDetails";
+import Bookings from "../pages/Bookings";
 
 const Routes = () => {
   return (
@@ -16,7 +19,16 @@ const Routes = () => {
       <Route path="/bookflight">
         <BookFlight />
       </Route>
-      <Route path="*">
+      <Route path="/destinations">
+        <Destinations />
+      </Route>
+      <Route path="/destination/:place">
+        <DestinationDetails />
+      </Route>
+      <Route path="/bookings">
+        <Bookings />
+      </Route>
+      <Route path={["*", "/notfound"]}>
         <NotFound />
       </Route>
     </Switch>

@@ -1,7 +1,7 @@
 import { useHistory, useLocation } from "react-router-dom";
 import { Layout, Steps, Button, Form, Input, DatePicker } from "antd";
 import { useState } from "react";
-import Flight from "../Components/Flight";
+import Flight from "../components/Flight";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChevronLeft,
@@ -259,6 +259,7 @@ const BookFlight = () => {
                   )} shortly.`}
                 </h2>
                 <p>You can cancel within the next 24 hours.</p>
+                <Button type="primary">View Bookings</Button>
               </div>
             )}
             <div>

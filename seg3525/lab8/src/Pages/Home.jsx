@@ -1,5 +1,5 @@
 import { Button, Tabs } from "antd";
-import FlightForm from "../Components/FlightForm";
+import FlightForm from "../components/FlightForm";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPlaneDeparture,
