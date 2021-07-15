@@ -2,7 +2,7 @@ import { Route, Switch } from "react-router-dom";
 import NotFound from "../pages/NotFound";
 import Home from "../pages/Home";
 import FlightResults from "../pages/FlightResults";
-import BookFlight from "../pages/BookFlight";
+import Book from "../pages/Book";
 import Destinations from "../pages/Destinations";
 import DestinationDetails from "../pages/DestinationDetails";
 import Bookings from "../pages/Bookings";
@@ -16,8 +16,8 @@ const Routes = () => {
       <Route path="/flights">
         <FlightResults />
       </Route>
-      <Route path="/bookflight">
-        <BookFlight />
+      <Route path="/book">
+        <Book />
       </Route>
       <Route path="/destinations">
         <Destinations />

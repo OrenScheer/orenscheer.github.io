@@ -12,7 +12,7 @@ import {
 const { Sider, Content } = Layout;
 const { Step } = Steps;
 
-const BookFlight = () => {
+const Book = () => {
   const flight = useLocation().state;
   const [currentStep, setCurrentStep] = useState(0);
   const history = useHistory();
@@ -259,7 +259,12 @@ const BookFlight = () => {
                   )} shortly.`}
                 </h2>
                 <p>You can cancel within the next 24 hours.</p>
-                <Button type="primary">View Bookings</Button>
+                <Button
+                  type="primary"
+                  onClick={() => history.push("/bookings")}
+                >
+                  View Bookings
+                </Button>
               </div>
             )}
             <div>
@@ -291,4 +296,4 @@ const BookFlight = () => {
   );
 };
 
-export default BookFlight;
+export default Book;

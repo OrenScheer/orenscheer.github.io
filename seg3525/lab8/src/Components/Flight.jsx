@@ -1,7 +1,10 @@
-import { List, Avatar } from "antd";
+import { List, Avatar, Typography } from "antd";
 import AirCanada from "../images/AirCanada.png";
 import AirTransat from "../images/AirTransat.png";
 import Alitalia from "../images/Alitalia.png";
+import "../App.less";
+
+const { Text } = Typography;
 
 const logoSources = {
   "Air Canada": AirCanada,
@@ -25,7 +28,20 @@ const Flight = ({ flight, button = null }) => {
           " → " +
           flight.to
         }
-        description={flight.airline}
+        description={
+          <>
+            <mark
+              style={{
+                backgroundColor: "rgba(255, 229, 143, 0.6)",
+                color: "rgba(0, 0, 0, 0.6)",
+                marginRight: "10px",
+              }}
+            >
+              Roundtrip
+            </mark>
+            {flight.airline}
+          </>
+        }
       />
       <div
         style={{
@@ -34,7 +50,7 @@ const Flight = ({ flight, button = null }) => {
           alignItems: "center",
         }}
       >
-        <h1>{`$${flight.price}`}</h1>
+        <Text>{`$${flight.price}`}</Text>
         {button}
       </div>
     </List.Item>

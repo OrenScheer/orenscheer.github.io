@@ -282,7 +282,7 @@ const FlightResults = () => {
                       type="primary"
                       onClick={(e) => {
                         e.preventDefault();
-                        history.push("/bookflight", flight);
+                        history.push("/book", flight);
                       }}
                     >
                       Book
