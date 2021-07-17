@@ -1,20 +1,25 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import { faAtlas } from "@fortawesome/free-solid-svg-icons";
+import { Typography } from "antd";
 
-const Logo = ({ fontSize }) => {
+const { Title } = Typography;
+
+const Logo = ({ style }) => {
   return (
-    <Link to="/">
-      <div>
-        <h1
+    <Link to="/" style={{ display: "flex", alignItems: "center" }}>
+      <div style={style}>
+        <Title
+          level={2}
           style={{
             color: "orange",
-            fontSize: fontSize,
+            margin: "0",
+            pading: "0",
           }}
         >
           <FontAwesomeIcon icon={faAtlas} style={{ marginRight: "10px" }} />
           Travel Orange
-        </h1>
+        </Title>
       </div>
     </Link>
   );

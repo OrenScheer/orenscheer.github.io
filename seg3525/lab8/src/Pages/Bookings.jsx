@@ -11,6 +11,8 @@ import Sandusky from "../images/Sandusky.jpg";
 import BermudaResort from "../images/BermudaResort.jpg";
 import NorwegianFjords from "../images/NorwegianFjords.jpg";
 
+const { Title } = Typography;
+
 const { Content } = Layout;
 const { Text } = Typography;
 
@@ -40,25 +42,25 @@ const vacations = [
 const Bookings = () => {
   return (
     <Layout height="500px" style={{ backgroundColor: "white" }}>
-      <h2 style={{ marginLeft: "20px" }}>
+      <Title level={3} style={{ marginLeft: "20px" }}>
         <FontAwesomeIcon
           icon={faCalendarCheck}
           style={{ marginRight: "15px" }}
         />
         My Bookings
-      </h2>
+      </Title>
       <Content
         style={{
           marginLeft: "20px",
         }}
       >
-        <h3 style={{ marginTop: "20px" }}>
+        <Title level={4} style={{ marginTop: "20px", fontWeight: "normal" }}>
           <FontAwesomeIcon
             icon={faPlaneDeparture}
             style={{ marginRight: "10px" }}
           />
           Flights
-        </h3>
+        </Title>
         <List
           grid={{ gutter: 16, column: 4 }}
           dataSource={flights}
@@ -91,10 +93,10 @@ const Bookings = () => {
             </List.Item>
           )}
         />
-        <h3 style={{ marginTop: "20px" }}>
+        <Title level={4} style={{ marginTop: "20px", fontWeight: "normal" }}>
           <FontAwesomeIcon icon={faSuitcase} style={{ marginRight: "10px" }} />
           Vacations
-        </h3>
+        </Title>
         <List
           grid={{ gutter: 16, column: 4 }}
           dataSource={vacations}

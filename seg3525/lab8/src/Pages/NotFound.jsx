@@ -1,7 +1,9 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Button } from "antd";
+import { Button, Typography } from "antd";
 import { useHistory } from "react-router-dom";
 import { faMapPin, faMap } from "@fortawesome/free-solid-svg-icons";
+
+const { Title } = Typography;
 
 const NotFound = () => {
   const history = useHistory();
@@ -23,8 +25,10 @@ const NotFound = () => {
           marginTop: "30px",
         }}
       >
-        <h1>You're off the map!</h1>
-        <h3>404 Not Found</h3>
+        <Title level={2}>You're off the map!</Title>
+        <Title level={4} style={{ marginTop: "0" }}>
+          404 Not Found
+        </Title>
         <Button onClick={() => history.push("/")} type="default">
           Go Home
         </Button>

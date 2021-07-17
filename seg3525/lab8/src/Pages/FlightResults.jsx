@@ -1,6 +1,6 @@
 import Layout from "antd/lib/layout/layout";
 import { useHistory, useLocation } from "react-router-dom";
-import { Form, Checkbox, Alert, List, Button, Select } from "antd";
+import { Form, Checkbox, Alert, List, Button, Select, Typography } from "antd";
 import { useCallback, useEffect, useState } from "react";
 import FlightForm from "../components/FlightForm";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -8,6 +8,7 @@ import { faPlaneSlash } from "@fortawesome/free-solid-svg-icons";
 import Flight from "../components/Flight";
 
 const { Sider, Content } = Layout;
+const { Text } = Typography;
 
 const flights = [
   { from: "Ottawa", to: "Toronto" },
@@ -212,8 +213,8 @@ const FlightResults = () => {
               )} to ${form.getFieldValue("to")}.`}
               description={
                 <>
-                  <p>You can fly direct from: </p>
-                  <ul>
+                  <Text>You can fly direct from: </Text>
+                  <ul style={{ marginTop: "10px" }}>
                     {options.map((option) => {
                       return (
                         <li

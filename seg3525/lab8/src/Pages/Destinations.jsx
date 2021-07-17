@@ -1,10 +1,11 @@
-import { Layout, List } from "antd";
+import { Layout, List, Typography } from "antd";
 import { Link } from "react-router-dom";
 import Rome from "../images/Rome.jpg";
 import Bermuda from "../images/Bermuda.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 
+const { Title, Text } = Typography;
 const { Content } = Layout;
 
 const listData = [
@@ -25,13 +26,13 @@ const listData = [
 const Destinations = () => {
   return (
     <Layout height="500px" style={{ backgroundColor: "white" }}>
-      <h2 style={{ marginLeft: "20px" }}>
+      <Title level={3} style={{ marginLeft: "20px" }}>
         <FontAwesomeIcon
           icon={faMapMarkerAlt}
           style={{ marginRight: "15px" }}
         />
         Destinations
-      </h2>
+      </Title>
       <Content
         style={{
           height: "500px",
@@ -57,7 +58,9 @@ const Destinations = () => {
                     title={item.name}
                     description={item.description}
                   />
-                  <p style={{ color: "rgba(0, 0, 0, 0.85)" }}>{item.content}</p>
+                  <Text style={{ color: "rgba(0, 0, 0, 0.85)" }}>
+                    {item.content}
+                  </Text>
                 </Link>
               </List.Item>
             );

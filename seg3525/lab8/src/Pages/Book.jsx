@@ -1,5 +1,13 @@
 import { useHistory, useLocation } from "react-router-dom";
-import { Layout, Steps, Button, Form, Input, DatePicker } from "antd";
+import {
+  Layout,
+  Steps,
+  Button,
+  Form,
+  Input,
+  DatePicker,
+  Typography,
+} from "antd";
 import { useState } from "react";
 import Flight from "../components/Flight";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -11,6 +19,7 @@ import {
 
 const { Sider, Content } = Layout;
 const { Step } = Steps;
+const { Title, Text } = Typography;
 
 const Book = () => {
   const flight = useLocation().state;
@@ -187,53 +196,53 @@ const Book = () => {
             )}
             {currentStep === 2 && (
               <div>
-                <h3>Details</h3>
+                <Title level={5}>Details</Title>
                 <ul>
                   <li>
-                    <strong>Email: </strong>
+                    <Text strong>Email: </Text>
                     {form.getFieldValue("email")}
                   </li>
                   <li>
-                    <strong>Phone: </strong>
+                    <Text strong>Phone: </Text>
                     {form.getFieldValue("phone")}
                   </li>
                   <li>
-                    <strong>Name: </strong>
+                    <Text strong>Name: </Text>
                     {`${form.getFieldValue("firstName")} ${form.getFieldValue(
                       "lastName"
                     )}`}
                   </li>
                   <li>
-                    <strong>Date of Birth: </strong>
+                    <Text strong>Date of Birth: </Text>
                     {form.getFieldValue("dateOfBirth").format().slice(0, 10)}
                   </li>
                   <li>
-                    <strong>Passport No.: </strong>
+                    <Text strong>Passport No.: </Text>
                     {form.getFieldValue("passport")}
                   </li>
                 </ul>
-                <h3>Payment</h3>
+                <Title level={5}>Payment</Title>
                 <ul>
                   <li>
-                    <strong>Credit Card: </strong>
+                    <Text strong>Credit Card: </Text>
                     {`**** **** **** ${form
                       .getFieldValue("creditCard")
                       .slice(15, 20)}`}
                   </li>
                   <li>
-                    <strong>Expiry: </strong>
+                    <Text strong>Expiry: </Text>
                     {form.getFieldValue("expiry").format().slice(0, 10)}
                   </li>
                   <li>
-                    <strong>CVV: </strong>
+                    <Text strong>CVV: </Text>
                     ***
                   </li>
                 </ul>
-                <h3>{`Your credit card ending in ${form
+                <Title level={5}>{`Your credit card ending in ${form
                   .getFieldValue("creditCard")
                   .slice(15, 20)} will be charged $${
                   flight.price
-                } at the end of the 24 hour cancellation period.`}</h3>
+                } at the end of the 24 hour cancellation period.`}</Title>
               </div>
             )}
             {currentStep === 3 && (
@@ -251,14 +260,19 @@ const Book = () => {
                   size="10x"
                   style={{ color: "green" }}
                 />
-                <h2 style={{ textAlign: "center" }}>
+                <Title
+                  level={3}
+                  style={{ textAlign: "center", marginTop: "12px" }}
+                >
                   Your booking is complete.
                   <br />
                   {`You will receive a confirmation email at ${form.getFieldValue(
                     "email"
                   )} shortly.`}
-                </h2>
-                <p>You can cancel within the next 24 hours.</p>
+                </Title>
+                <Text style={{ marginBottom: "12px" }}>
+                  You can cancel within the next 24 hours.
+                </Text>
                 <Button
                   type="primary"
                   onClick={() => history.push("/bookings")}

@@ -12,12 +12,16 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 const navs = (location) => {
-  if (location === "/") {
-    return ["home"];
-  } else if (location.includes("destination")) {
+  if (location.includes("destination")) {
     return ["destinations"];
   } else if (location.includes("booking")) {
     return ["bookings"];
+  } else if (
+    location === "/" ||
+    location.includes("flight") ||
+    location.includes("book")
+  ) {
+    return ["home"];
   }
   return [];
 };
@@ -40,7 +44,7 @@ const App = () => {
           justifyContent: "space-between",
         }}
       >
-        <Logo fontSize="28px" />
+        <Logo style={{ marginLeft: "15px" }} />
         <Menu
           theme="light"
           mode="horizontal"
@@ -58,7 +62,7 @@ const App = () => {
                 icon={faSearch}
                 style={{ marginRight: "10px" }}
               />
-              Home
+              Search
             </Link>
           </Menu.Item>
           <Menu.Item key="destinations">
