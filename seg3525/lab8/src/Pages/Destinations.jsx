@@ -2,6 +2,8 @@ import { Layout, List } from "antd";
 import { Link } from "react-router-dom";
 import Rome from "../images/Rome.jpg";
 import Bermuda from "../images/Bermuda.png";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 
 const { Content } = Layout;
 
@@ -23,7 +25,13 @@ const listData = [
 const Destinations = () => {
   return (
     <Layout height="500px" style={{ backgroundColor: "white" }}>
-      <h2 style={{ marginLeft: "20px" }}>Destinations</h2>
+      <h2 style={{ marginLeft: "20px" }}>
+        <FontAwesomeIcon
+          icon={faMapMarkerAlt}
+          style={{ marginRight: "15px" }}
+        />
+        Destinations
+      </h2>
       <Content
         style={{
           height: "500px",

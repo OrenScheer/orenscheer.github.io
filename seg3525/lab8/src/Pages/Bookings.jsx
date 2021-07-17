@@ -3,10 +3,13 @@ import { Layout, List, Card, Typography } from "antd";
 import {
   faPlaneDeparture,
   faSuitcase,
+  faCalendarCheck,
 } from "@fortawesome/free-solid-svg-icons";
 import Rome from "../images/Rome.jpg";
 import Sydney from "../images/Sydney.jpg";
 import Sandusky from "../images/Sandusky.jpg";
+import BermudaResort from "../images/BermudaResort.jpg";
+import NorwegianFjords from "../images/NorwegianFjords.jpg";
 
 const { Content } = Layout;
 const { Text } = Typography;
@@ -21,13 +24,31 @@ const flights = [
   },
 ];
 
+const vacations = [
+  {
+    title: "Bermuda Resort",
+    dates: "Jul. 10 - Jul. 18, 2021",
+    image: BermudaResort,
+  },
+  {
+    title: "Norwegian Fjords Cruise",
+    dates: "Sep. 1 - Sep 10, 2021",
+    image: NorwegianFjords,
+  },
+];
+
 const Bookings = () => {
   return (
     <Layout height="500px" style={{ backgroundColor: "white" }}>
-      <h2 style={{ marginLeft: "20px" }}>My Bookings</h2>
+      <h2 style={{ marginLeft: "20px" }}>
+        <FontAwesomeIcon
+          icon={faCalendarCheck}
+          style={{ marginRight: "15px" }}
+        />
+        My Bookings
+      </h2>
       <Content
         style={{
-          height: "500px",
           marginLeft: "20px",
         }}
       >
@@ -76,10 +97,25 @@ const Bookings = () => {
         </h3>
         <List
           grid={{ gutter: 16, column: 4 }}
-          dataSource={flights}
-          renderItem={(flight) => (
+          dataSource={vacations}
+          renderItem={(vacation) => (
             <List.Item>
-              <Card title={flight.title}>Card content</Card>
+              <Card
+                cover={
+                  <img
+                    alt="logo"
+                    src={vacation.image}
+                    width={270}
+                    height={180}
+                  />
+                }
+                style={{ width: 270 }}
+              >
+                <Card.Meta
+                  title={<Text>{vacation.title}</Text>}
+                  description={vacation.dates}
+                ></Card.Meta>
+              </Card>
             </List.Item>
           )}
         />

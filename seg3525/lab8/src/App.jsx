@@ -4,6 +4,12 @@ import { Layout, Menu } from "antd";
 import Routes from "./components/Routes";
 import Logo from "./components/Logo";
 import { useEffect, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faCalendarCheck,
+  faMapMarkerAlt,
+  faSearch,
+} from "@fortawesome/free-solid-svg-icons";
 
 const navs = (location) => {
   if (location === "/") {
@@ -40,16 +46,38 @@ const App = () => {
           mode="horizontal"
           className="menu-bar"
           selectedKeys={activeNavs}
+          style={{
+            width: "400px",
+            display: "flex",
+            justifyContent: "flex-end",
+          }}
         >
           <Menu.Item key="home">
-            <Link to="/">Home</Link>
+            <Link to="/">
+              <FontAwesomeIcon
+                icon={faSearch}
+                style={{ marginRight: "10px" }}
+              />
+              Home
+            </Link>
           </Menu.Item>
-
           <Menu.Item key="destinations">
-            <Link to="/destinations">Destinations</Link>
+            <Link to="/destinations">
+              <FontAwesomeIcon
+                icon={faMapMarkerAlt}
+                style={{ marginRight: "10px" }}
+              />
+              Destinations
+            </Link>
           </Menu.Item>
           <Menu.Item key="bookings">
-            <Link to="/bookings">My Bookings</Link>
+            <Link to="/bookings">
+              <FontAwesomeIcon
+                icon={faCalendarCheck}
+                style={{ marginRight: "10px" }}
+              />
+              My Bookings
+            </Link>
           </Menu.Item>
         </Menu>
       </Header>
