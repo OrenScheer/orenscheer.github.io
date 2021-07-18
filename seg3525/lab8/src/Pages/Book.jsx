@@ -7,6 +7,7 @@ import {
   Input,
   DatePicker,
   Typography,
+  Result,
 } from "antd";
 import { useRef, useState } from "react";
 import Flight from "../components/Flight";
@@ -14,7 +15,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChevronLeft,
   faQuestionCircle,
-  faCheckCircle,
 } from "@fortawesome/free-solid-svg-icons";
 
 const { Sider, Content } = Layout;
@@ -343,44 +343,31 @@ const Book = ({ language }) => {
               </div>
             )}
             {currentStep === 3 && (
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  height: "100%",
-                }}
-              >
-                <FontAwesomeIcon
-                  icon={faCheckCircle}
-                  size="10x"
-                  style={{ color: "green" }}
-                />
-                <Title
-                  level={3}
-                  style={{ textAlign: "center", marginTop: "12px" }}
-                >
-                  {text.bookingComplete[language]}
-                  <br />
-                  {language === "eng"
-                    ? `You will receive a confirmation email at ${form.getFieldValue(
-                        "email"
-                      )} shortly.`
-                    : `Vous recevrez bientôt un courriel de confirmation à ${form.getFieldValue(
-                        "email"
-                      )}.`}
-                </Title>
-                <Text style={{ marginBottom: "12px" }}>
-                  {text.cancellationPolicy[language]}
-                </Text>
-                <Button
-                  type="primary"
-                  onClick={() => history.push("/bookings")}
-                >
-                  {text.viewBookings[language]}
-                </Button>
-              </div>
+              <Result
+                status="success"
+                title={
+                  <>
+                    {text.bookingComplete[language]}
+                    <br />
+                    {language === "eng"
+                      ? `You will receive a confirmation email at ${form.getFieldValue(
+                          "email"
+                        )} shortly.`
+                      : `Vous recevrez bientôt un courriel de confirmation à ${form.getFieldValue(
+                          "email"
+                        )}.`}
+                  </>
+                }
+                subTitle={text.cancellationPolicy[language]}
+                extra={[
+                  <Button
+                    type="primary"
+                    onClick={() => history.push("/bookings")}
+                  >
+                    {text.viewBookings[language]}
+                  </Button>,
+                ]}
+              />
             )}
             <div>
               <Button

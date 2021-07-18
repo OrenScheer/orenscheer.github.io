@@ -10,20 +10,33 @@ const { Content } = Layout;
 
 const listData = [
   {
-    name: "Rome",
+    name: { eng: "Rome", fra: "Rome" },
     image: Rome,
-    description: "Flights from Toronto starting at $820",
-    content: "Explore ancient history in Italy's capital city.",
+    price: 820,
+    content: {
+      eng: "Explore ancient history in Italy's capital city.",
+      fra: "Explorer de l'histoire ancienne dans la capitale d'Italie.",
+    },
   },
   {
-    name: "Bermuda",
+    name: { eng: "Bermuda", fra: "Bermudes" },
     image: Bermuda,
-    description: "Flights from Toronto starting at $490",
-    content:
-      "Relax on the beach with an all-inclusive trip from Travel Orange.",
+    price: 490,
+    content: {
+      eng: "Relax on the beach with Travel Orange.",
+      fra: "Se relaxer à la plage avec Voyages Oranges.",
+    },
   },
 ];
-const Destinations = () => {
+
+const text = {
+  flightsFromToronto: {
+    eng: "Flights from Toronto starting at",
+    fra: "Vols de Toronto commençant à",
+  },
+};
+
+const Destinations = ({ language }) => {
   return (
     <Layout height="500px" style={{ backgroundColor: "white" }}>
       <Title level={3} style={{ marginLeft: "20px" }}>
@@ -43,10 +56,10 @@ const Destinations = () => {
           size="large"
           dataSource={listData}
           renderItem={(item) => {
-            const link = `/destination/${item.name}`;
+            const link = `/destination/${item.name.eng}`;
             return (
               <List.Item
-                key={item.name}
+                key={item.name.eng}
                 extra={
                   <Link to={link}>
                     <img width={272} alt="logo" src={item.image} />
@@ -55,11 +68,15 @@ const Destinations = () => {
               >
                 <Link to={link}>
                   <List.Item.Meta
-                    title={item.name}
-                    description={item.description}
+                    title={item.name[language]}
+                    description={
+                      language === "eng"
+                        ? `${text.flightsFromToronto[language]} $${item.price}.`
+                        : `${text.flightsFromToronto[language]} ${item.price}$.`
+                    }
                   />
                   <Text style={{ color: "rgba(0, 0, 0, 0.85)" }}>
-                    {item.content}
+                    {item.content[language]}
                   </Text>
                 </Link>
               </List.Item>

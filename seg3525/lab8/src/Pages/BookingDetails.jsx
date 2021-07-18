@@ -1,5 +1,5 @@
-import { useHistory, useParams } from "react-router-dom";
-import { Layout, Typography } from "antd";
+import { useHistory, useParams, Link } from "react-router-dom";
+import { Layout, Typography, Button, notification } from "antd";
 import DatePlanner from "../components/DatePlanner";
 import moment from "moment";
 
@@ -24,7 +24,20 @@ const trips = {
   },
 };
 
-const BookingDetails = () => {
+const text = {
+  cancel: { eng: "Cancel", fra: "Annuler" },
+  save: { eng: "Save", fra: "Sauvegarder" },
+  saved: {
+    eng: "Your plan has been saved.",
+    fra: "Votre plan a été sauvegardé.",
+  },
+  notSaved: {
+    eng: "Your plan was not saved.",
+    fra: "Votre plan n'a pas été sauvegardé.",
+  },
+};
+
+const BookingDetails = ({ language }) => {
   const { id } = useParams();
   const history = useHistory();
   const trip = trips[id];
@@ -33,16 +46,43 @@ const BookingDetails = () => {
     history.replace("/notfound");
   }
 
-  console.log(moment(trip.departureDate).add(2, "days"));
-  console.log(trip.departureDate);
-
   return (
     <>
       {trip && (
         <Layout height="500px" style={{ backgroundColor: "white" }}>
-          <Title level={3} style={{ marginLeft: "20px" }}>
-            {trip.title}
-          </Title>
+          <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <Title level={3} style={{ marginLeft: "20px" }}>
+              {trip.title}
+            </Title>
+            <div>
+              <Link to="/bookings">
+                <Button
+                  onClick={() =>
+                    notification.info({
+                      message: text.notSaved[language],
+                      placement: "bottomRight",
+                    })
+                  }
+                >
+                  {text.cancel[language]}
+                </Button>
+              </Link>
+              <Link to="/bookings">
+                <Button
+                  type="primary"
+                  style={{ marginLeft: "20px" }}
+                  onClick={() =>
+                    notification.success({
+                      message: text.saved[language],
+                      placement: "bottomRight",
+                    })
+                  }
+                >
+                  {text.save[language]}
+                </Button>
+              </Link>
+            </div>
+          </div>
           <Content
             style={{
               height: "500px",
@@ -51,10 +91,19 @@ const BookingDetails = () => {
               justifyContent: "space-between",
             }}
           >
-            <DatePlanner date={trip.departureDate} />
-            <DatePlanner date={moment(trip.departureDate).add(1, "days")} />
-            <DatePlanner date={moment(trip.departureDate).add(2, "days")} />
-            <DatePlanner date={moment(trip.departureDate).add(3, "days")} />
+            <DatePlanner language={language} date={trip.departureDate} />
+            <DatePlanner
+              language={language}
+              date={moment(trip.departureDate).add(1, "days")}
+            />
+            <DatePlanner
+              language={language}
+              date={moment(trip.departureDate).add(2, "days")}
+            />
+            <DatePlanner
+              language={language}
+              date={moment(trip.departureDate).add(3, "days")}
+            />
           </Content>
         </Layout>
       )}

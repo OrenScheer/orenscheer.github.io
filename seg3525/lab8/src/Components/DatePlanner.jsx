@@ -1,13 +1,24 @@
 import moment from "moment";
+import "moment/locale/fr-ca";
+import "moment/locale/en-ca";
 import { Typography, Button, Popover, Input, TimePicker } from "antd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const { Title } = Typography;
 const { Search } = Input;
 
-const DatePlannerSection = ({ startTime, defaultTimeString }) => {
+const text = {
+  beforeNoon: { eng: "Morning (before noon)", fra: "Matin (avant midi)" },
+  afterNoon: { eng: "Afternoon (before 6 PM)", fra: "Après-midi (avant 18 h)" },
+  evening: { eng: "Evening (before midnight)", fra: "Soir (avant minuit)" },
+  addAnEvent: { eng: "Add an event", fra: "Ajouter un événement" },
+  add: { eng: "Add", fra: "Ajouter" },
+  placeholder: { eng: "Description", fra: "Description" },
+};
+
+const DatePlannerSection = ({ startTime, defaultTimeString, language }) => {
   const [visible, setVisible] = useState(false);
   const [inputValue, setInputValue] = useState();
   const [timeValue, setTimeValue] = useState(
@@ -27,7 +38,17 @@ const DatePlannerSection = ({ startTime, defaultTimeString }) => {
       <Title level={5}>{startTime}</Title>
       <Popover
         trigger="click"
-        title="Add an event"
+        title={
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              width: "100%",
+            }}
+          >
+            {text.addAnEvent[language]}
+          </div>
+        }
         placement="bottom"
         visible={visible}
         onVisibleChange={(visible) => {
@@ -37,7 +58,15 @@ const DatePlannerSection = ({ startTime, defaultTimeString }) => {
           setTimeValueString(defaultTimeString);
         }}
         content={
-          <div style={{ width: "250px" }}>
+          <div
+            style={{
+              width: "250px",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
             <TimePicker
               value={timeValue}
               format={"H:mm A"}
@@ -47,9 +76,11 @@ const DatePlannerSection = ({ startTime, defaultTimeString }) => {
                 setTimeValue(time);
                 setTimeValueString(time.format("H:mm A"));
               }}
+              style={{ marginBottom: "10px" }}
             />
             <Search
-              enterButton="Add"
+              enterButton={text.add[language]}
+              placeholder={text.placeholder[language]}
               onSearch={() => {
                 setVisible(false);
                 setEvents((oldArray) => [
@@ -67,7 +98,7 @@ const DatePlannerSection = ({ startTime, defaultTimeString }) => {
           type="primary"
           shape="circle"
           icon={<FontAwesomeIcon icon={faPlus} />}
-          title="Add an event"
+          title={text.addAnEvent[language]}
           onClick={() => setVisible(true)}
         />
       </Popover>
@@ -91,7 +122,11 @@ const DatePlannerSection = ({ startTime, defaultTimeString }) => {
   );
 };
 
-const DatePlanner = ({ date }) => {
+const DatePlanner = ({ date, language }) => {
+  const [locale, setLocale] = useState(language === "eng" ? "en-ca" : "fr-ca");
+  useEffect(() => {
+    setLocale(language === "eng" ? "en-ca" : "fr-ca");
+  }, [language]);
   return (
     <div
       style={{
@@ -102,7 +137,10 @@ const DatePlanner = ({ date }) => {
       }}
     >
       <Title level={4} style={{ textAlign: "center", marginTop: "5px" }}>
-        {date.format("MMM D, YYYY")}
+        {moment(date)
+          .locale(locale)
+          .format("MMM D, YYYY")
+          .replace(/^\w/, (c) => c.toUpperCase())}
       </Title>
       <div
         style={{
@@ -115,19 +153,22 @@ const DatePlanner = ({ date }) => {
       >
         {
           <DatePlannerSection
-            startTime="Morning (before noon)"
+            language={language}
+            startTime={text.beforeNoon[language]}
             defaultTimeString="8:00 AM"
           />
         }
         {
           <DatePlannerSection
-            startTime="Afternoon (before 6 PM)"
+            language={language}
+            startTime={text.afterNoon[language]}
             defaultTimeString="3:00 PM"
           />
         }
         {
           <DatePlannerSection
-            startTime="Evening (before midnight)"
+            language={language}
+            startTime={text.evening[language]}
             defaultTimeString="7:00 PM"
           />
         }
