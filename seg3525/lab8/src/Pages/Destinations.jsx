@@ -1,7 +1,7 @@
 import { Layout, List, Typography } from "antd";
 import { Link } from "react-router-dom";
 import Rome from "../images/Rome.jpg";
-import Bermuda from "../images/Bermuda.png";
+import BermudaResort from "../images/BermudaResort.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 
@@ -20,7 +20,7 @@ const listData = [
   },
   {
     name: { eng: "Bermuda", fra: "Bermudes" },
-    image: Bermuda,
+    image: BermudaResort,
     price: 490,
     content: {
       eng: "Relax on the beach with Travel Orange.",

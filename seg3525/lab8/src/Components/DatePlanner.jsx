@@ -16,16 +16,26 @@ const text = {
   addAnEvent: { eng: "Add an event", fra: "Ajouter un événement" },
   add: { eng: "Add", fra: "Ajouter" },
   placeholder: { eng: "Description", fra: "Description" },
+  timeFormat: { eng: "h:mm A", fra: "HH:mm" },
+  morningTimeString: { eng: "8:00 AM", fra: "8:00" },
+  afternoonTimeString: { eng: "3:00 PM", fra: "15:00" },
+  eveningTimeString: { eng: "7:00 PM", fra: "19:00" },
 };
 
-const DatePlannerSection = ({ startTime, defaultTimeString, language }) => {
+const DatePlannerSection = ({
+  language,
+  startTime,
+  defaultTimeString,
+  disabledHours,
+}) => {
   const [visible, setVisible] = useState(false);
   const [inputValue, setInputValue] = useState();
   const [timeValue, setTimeValue] = useState(
-    moment(defaultTimeString, "H:mm A")
+    moment(defaultTimeString, text.timeFormat[language])
   );
   const [timeValueString, setTimeValueString] = useState(defaultTimeString);
   const [events, setEvents] = useState([]);
+
   return (
     <div
       style={{
@@ -54,7 +64,7 @@ const DatePlannerSection = ({ startTime, defaultTimeString, language }) => {
         onVisibleChange={(visible) => {
           setVisible(visible);
           setInputValue("");
-          setTimeValue(moment(defaultTimeString, "H:mm A"));
+          setTimeValue(moment(defaultTimeString, text.timeFormat[language]));
           setTimeValueString(defaultTimeString);
         }}
         content={
@@ -69,14 +79,15 @@ const DatePlannerSection = ({ startTime, defaultTimeString, language }) => {
           >
             <TimePicker
               value={timeValue}
-              format={"H:mm A"}
+              format={text.timeFormat[language]}
               showNow={false}
               minuteStep={5}
               onChange={(time) => {
                 setTimeValue(time);
-                setTimeValueString(time.format("H:mm A"));
+                setTimeValueString(time.format(text.timeFormat[language]));
               }}
               style={{ marginBottom: "10px" }}
+              disabledHours={() => disabledHours}
             />
             <Search
               enterButton={text.add[language]}
@@ -105,8 +116,8 @@ const DatePlannerSection = ({ startTime, defaultTimeString, language }) => {
       <div>
         {[...events]
           .sort((a, b) => {
-            let timeA = moment(a[0], "H:mm A");
-            let timeB = moment(b[0], "H:mm A");
+            let timeA = moment(a[0], text.timeFormat[language]);
+            let timeB = moment(b[0], text.timeFormat[language]);
             if (moment(timeA).isBefore(timeB)) {
               return -1;
             } else if (moment(timeB).isBefore(timeA)) {
@@ -155,21 +166,29 @@ const DatePlanner = ({ date, language }) => {
           <DatePlannerSection
             language={language}
             startTime={text.beforeNoon[language]}
-            defaultTimeString="8:00 AM"
+            defaultTimeString={text.morningTimeString[language]}
+            disabledHours={[12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]}
           />
         }
         {
           <DatePlannerSection
             language={language}
             startTime={text.afterNoon[language]}
-            defaultTimeString="3:00 PM"
+            defaultTimeString={text.afternoonTimeString[language]}
+            disabledHours={[
+              0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 18, 19, 20, 21, 22, 23,
+              24,
+            ]}
           />
         }
         {
           <DatePlannerSection
             language={language}
             startTime={text.evening[language]}
-            defaultTimeString="7:00 PM"
+            defaultTimeString={text.eveningTimeString[language]}
+            disabledHours={[
+              0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,
+            ]}
           />
         }
       </div>

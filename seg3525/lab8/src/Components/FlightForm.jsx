@@ -104,7 +104,12 @@ const FlightForm = ({
             labelAlign="left"
             labelCol={{ span: 9, offset: 1 }}
           >
-            <DatePicker disabled={departureDisabled} />
+            <DatePicker
+              disabled={departureDisabled}
+              disabledDate={(currentDate) =>
+                currentDate < moment().subtract(1, "days")
+              }
+            />
           </Form.Item>
         </Col>
         <Col
@@ -132,7 +137,8 @@ const FlightForm = ({
             <DatePicker
               disabled={returnDisabled}
               disabledDate={(currentDate) =>
-                currentDate < form.getFieldValue("departureDate")
+                currentDate < form.getFieldValue("departureDate") ||
+                currentDate < moment()
               }
             />
           </Form.Item>

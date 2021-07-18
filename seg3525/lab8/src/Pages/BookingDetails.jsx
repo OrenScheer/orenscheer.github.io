@@ -28,7 +28,7 @@ const text = {
   cancel: { eng: "Cancel", fra: "Annuler" },
   save: { eng: "Save", fra: "Sauvegarder" },
   saved: {
-    eng: "Your plan has been saved.",
+    eng: "Your plan was saved.",
     fra: "Votre plan a été sauvegardé.",
   },
   notSaved: {

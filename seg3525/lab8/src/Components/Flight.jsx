@@ -4,7 +4,7 @@ import AirTransat from "../images/AirTransat.png";
 import Alitalia from "../images/Alitalia.png";
 import "../App.less";
 
-const { Text } = Typography;
+const { Title } = Typography;
 
 const logoSources = {
   "Air Canada": AirCanada,
@@ -52,9 +52,9 @@ const Flight = ({ language, flight, button = null }) => {
           alignItems: "center",
         }}
       >
-        <Text>
+        <Title level={4} style={{ margin: "0" }}>
           {language === "eng" ? `$${flight.price}` : `${flight.price}$`}
-        </Text>
+        </Title>
         {button}
       </div>
     </List.Item>

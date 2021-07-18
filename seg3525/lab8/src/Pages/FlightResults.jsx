@@ -121,6 +121,14 @@ const text = {
   priceAscending: { eng: "Price (low to high)", fra: "Prix (croissant)" },
   priceDescending: { eng: "Price (high to low)", fra: "Prix (décroissant)" },
   book: { eng: "Book", fra: "Réserver" },
+  directFlightsOnly: {
+    eng: "Direct flights only",
+    fra: "Vols directs seulement",
+  },
+  options: {
+    eng: "You can fly direct from",
+    fra: "Vous pouvez voler direct de",
+  },
 };
 
 const sortPriceDescending = (a, b) => {
@@ -182,7 +190,7 @@ const FlightResults = ({ language }) => {
         valuePropName="checked"
         wrapperCol={{ span: 14, offset: 7 }}
       >
-        <Checkbox>Direct Flights Only</Checkbox>
+        <Checkbox>{text.directFlightsOnly[language]}</Checkbox>
       </Form.Item>
     </>
   );
@@ -216,12 +224,18 @@ const FlightResults = ({ language }) => {
         {results.length === 0 && (
           <div style={{ display: "flex", justifyContent: "center" }}>
             <Alert
-              message={`There are no direct flights from ${form.getFieldValue(
-                "from"
-              )} to ${form.getFieldValue("to")}.`}
+              message={
+                language === "eng"
+                  ? `There are no direct flights from ${form.getFieldValue(
+                      "from"
+                    )} to ${form.getFieldValue("to")}.`
+                  : `Il n'y a pas de vols directs de ${form.getFieldValue(
+                      "from"
+                    )} à ${form.getFieldValue("to")}.`
+              }
               description={
                 <>
-                  <Text>You can fly direct from: </Text>
+                  <Text>{`${text.options[language]}:`}</Text>
                   <ul style={{ marginTop: "10px" }}>
                     {options.map((option) => {
                       return (

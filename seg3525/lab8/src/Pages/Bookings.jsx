@@ -87,19 +87,21 @@ const Bookings = ({ language }) => {
           grid={{ gutter: 16, column: 4 }}
           dataSource={flights}
           renderItem={(flight) => (
-            <Link to={`/booking/${flight.id}`}>
-              <List.Item>
-                <Card
-                  cover={
+            <List.Item>
+              <Card
+                cover={
+                  <Link to={`/booking/${flight.id}`}>
                     <img
                       alt="logo"
                       src={flight.image}
-                      width={270}
+                      width={280}
                       height={180}
                     />
-                  }
-                  style={{ width: 280 }}
-                >
+                  </Link>
+                }
+                style={{ width: 280 }}
+              >
+                <Link to={`/booking/${flight.id}`}>
                   <Card.Meta
                     title={<Text>{flight.title}</Text>}
                     description={
@@ -117,9 +119,9 @@ const Bookings = ({ language }) => {
                       </>
                     }
                   ></Card.Meta>
-                </Card>
-              </List.Item>
-            </Link>
+                </Link>
+              </Card>
+            </List.Item>
           )}
         />
         <Title level={4} style={{ marginTop: "20px", fontWeight: "normal" }}>
@@ -130,26 +132,24 @@ const Bookings = ({ language }) => {
           grid={{ gutter: 16, column: 4 }}
           dataSource={vacations}
           renderItem={(vacation) => (
-            <Link to="/">
-              <List.Item>
-                <Card
-                  cover={
-                    <img
-                      alt="logo"
-                      src={vacation.image}
-                      width={270}
-                      height={180}
-                    />
-                  }
-                  style={{ width: 280 }}
-                >
-                  <Card.Meta
-                    title={<Text>{vacation.title[language]}</Text>}
-                    description={vacation.dates[language]}
-                  ></Card.Meta>
-                </Card>
-              </List.Item>
-            </Link>
+            <List.Item>
+              <Card
+                cover={
+                  <img
+                    alt="logo"
+                    src={vacation.image}
+                    width={270}
+                    height={180}
+                  />
+                }
+                style={{ width: 280 }}
+              >
+                <Card.Meta
+                  title={<Text>{vacation.title[language]}</Text>}
+                  description={vacation.dates[language]}
+                ></Card.Meta>
+              </Card>
+            </List.Item>
           )}
         />
       </Content>

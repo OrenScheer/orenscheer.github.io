@@ -78,9 +78,6 @@ const Home = ({ language }) => {
           ></TabPane>
         </Tabs>
       </div>
-      {/* <div style={{ marginLeft: "20px" }}>
-        <img src={OrangeCounty} alt="Orange County, CA" height="500px" />
-      </div> */}
     </div>
   );
 };
