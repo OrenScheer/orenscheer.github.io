@@ -8,32 +8,32 @@ import DestinationDetails from "../pages/DestinationDetails";
 import Bookings from "../pages/Bookings";
 import BookingDetails from "../pages/BookingDetails";
 
-const Routes = () => {
+const Routes = ({ language }) => {
   return (
     <Switch>
       <Route exact path="/">
-        <Home />
+        <Home language={language} />
       </Route>
       <Route path="/flights">
-        <FlightResults />
+        <FlightResults language={language} />
       </Route>
       <Route path="/book">
-        <Book />
+        <Book language={language} />
       </Route>
       <Route path="/destinations">
-        <Destinations />
+        <Destinations language={language} />
       </Route>
       <Route path="/destination/:place">
-        <DestinationDetails />
+        <DestinationDetails language={language} />
       </Route>
       <Route path="/bookings">
-        <Bookings />
+        <Bookings language={language} />
       </Route>
       <Route path="/booking/:id">
-        <BookingDetails />
+        <BookingDetails language={language} />
       </Route>
       <Route path={["*", "/notfound"]}>
-        <NotFound />
+        <NotFound language={language} />
       </Route>
     </Switch>
   );

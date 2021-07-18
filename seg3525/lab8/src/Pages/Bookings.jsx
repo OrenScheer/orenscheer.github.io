@@ -51,7 +51,7 @@ const vacations = [
   },
 ];
 
-const Bookings = () => {
+const Bookings = ({ language }) => {
   return (
     <Layout height="500px" style={{ backgroundColor: "white" }}>
       <Title level={3} style={{ marginLeft: "20px" }}>

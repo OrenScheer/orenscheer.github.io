@@ -3,7 +3,22 @@ import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import moment from "moment";
 
+const text = {
+  from: { eng: "From", fra: "De" },
+  to: { eng: "To", fra: "À" },
+  departureDate: { eng: "Departure date", fra: "Date de départ" },
+  returnDate: { eng: "Return date", fra: "Date de retour" },
+  flexible: { eng: "Flexible", fra: "Flexible" },
+  required: { eng: "This field is required", fra: "Ce champ est obligatoire" },
+};
+
+const returnDateCol = {
+  eng: { span: 7, offset: 3 },
+  fra: { span: 9, offset: 1 },
+};
+
 const FlightForm = ({
+  language,
   form,
   values = {},
   additionalFields = null,
@@ -60,15 +75,23 @@ const FlightForm = ({
       form={form}
       initialValues={values}
       onValuesChange={changeFormValues}
-      validateMessages={{ required: "This field is required." }}
+      validateMessages={{ required: text.required[language] }}
     >
-      <Form.Item name="from" label="From" rules={[{ required: true }]}>
+      <Form.Item
+        name="from"
+        label={text.from[language]}
+        rules={[{ required: true }]}
+      >
         <Select>
           <Select.Option value="Ottawa">Ottawa</Select.Option>
           <Select.Option value="Toronto">Toronto</Select.Option>
         </Select>
       </Form.Item>
-      <Form.Item name="to" label="To" rules={[{ required: true }]}>
+      <Form.Item
+        name="to"
+        label={text.to[language]}
+        rules={[{ required: true }]}
+      >
         <Select>
           <Select.Option value="Rome">Rome</Select.Option>
         </Select>
@@ -77,7 +100,7 @@ const FlightForm = ({
         <Col span={17}>
           <Form.Item
             name="departureDate"
-            label="Departure date"
+            label={text.departureDate[language]}
             labelAlign="left"
             labelCol={{ span: 9, offset: 1 }}
           >
@@ -92,7 +115,9 @@ const FlightForm = ({
           }}
         >
           <Form.Item name="departAnytime" valuePropName="checked">
-            <Checkbox defaultChecked={values.departAnytime}>Anytime</Checkbox>
+            <Checkbox defaultChecked={values.departAnytime}>
+              {text.flexible[language]}
+            </Checkbox>
           </Form.Item>
         </Col>
       </Row>
@@ -100,9 +125,9 @@ const FlightForm = ({
         <Col span={17}>
           <Form.Item
             name="returnDate"
-            label="Return date"
+            label={text.returnDate[language]}
             labelAlign="left"
-            labelCol={{ span: 7, offset: 3 }}
+            labelCol={returnDateCol[language]}
           >
             <DatePicker
               disabled={returnDisabled}
@@ -120,7 +145,9 @@ const FlightForm = ({
           }}
         >
           <Form.Item name="returnAnytime" valuePropName="checked">
-            <Checkbox defaultChecked={values.returnAnytime}>Anytime</Checkbox>
+            <Checkbox defaultChecked={values.returnAnytime}>
+              {text.flexible[language]}
+            </Checkbox>
           </Form.Item>
         </Col>
       </Row>

@@ -5,7 +5,9 @@ import { Typography } from "antd";
 
 const { Title } = Typography;
 
-const Logo = ({ style }) => {
+const text = { name: { eng: "Travel Orange", fra: "Voyages Oranges" } };
+
+const Logo = ({ style, language }) => {
   return (
     <Link to="/" style={{ display: "flex", alignItems: "center" }}>
       <div style={style}>
@@ -18,7 +20,7 @@ const Logo = ({ style }) => {
           }}
         >
           <FontAwesomeIcon icon={faAtlas} style={{ marginRight: "10px" }} />
-          Travel Orange
+          {text.name[language]}
         </Title>
       </div>
     </Link>

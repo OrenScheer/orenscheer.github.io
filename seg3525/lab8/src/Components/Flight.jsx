@@ -12,7 +12,9 @@ const logoSources = {
   Alitalia: Alitalia,
 };
 
-const Flight = ({ flight, button = null }) => {
+const text = { roundtrip: { eng: "Roundtrip", fra: "Aller-retour" } };
+
+const Flight = ({ language, flight, button = null }) => {
   return (
     <List.Item>
       <List.Item.Meta
@@ -37,7 +39,7 @@ const Flight = ({ flight, button = null }) => {
                 marginRight: "10px",
               }}
             >
-              Roundtrip
+              {text.roundtrip[language]}
             </mark>
             {flight.airline}
           </>
@@ -50,7 +52,9 @@ const Flight = ({ flight, button = null }) => {
           alignItems: "center",
         }}
       >
-        <Text>{`$${flight.price}`}</Text>
+        <Text>
+          {language === "eng" ? `$${flight.price}` : `${flight.price}$`}
+        </Text>
         {button}
       </div>
     </List.Item>

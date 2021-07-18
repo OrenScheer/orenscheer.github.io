@@ -9,7 +9,13 @@ import { Form } from "antd";
 
 const { TabPane } = Tabs;
 
-const Home = () => {
+const text = {
+  flights: { eng: "Flights", fra: "Vols" },
+  vacations: { eng: "Vacations", fra: "Vacances" },
+  search: { eng: "Search", fra: "Chercher" },
+};
+
+const Home = ({ language }) => {
   const [form] = Form.useForm();
   return (
     <div
@@ -43,16 +49,17 @@ const Home = () => {
                   icon={faPlaneDeparture}
                   style={{ marginRight: "5px" }}
                 />
-                Flights
+                {text.flights[language]}
               </span>
             }
             key="1"
           >
             <FlightForm
+              language={language}
               form={form}
               submitButton={
                 <Button type="primary" htmlType="submit">
-                  Search
+                  {text.search[language]}
                 </Button>
               }
             />
@@ -64,7 +71,7 @@ const Home = () => {
                   icon={faSuitcase}
                   style={{ marginRight: "5px" }}
                 />
-                Vacations
+                {text.vacations[language]}
               </span>
             }
             key="2"

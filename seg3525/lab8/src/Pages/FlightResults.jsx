@@ -116,6 +116,13 @@ const sortPriceAscending = (a, b) => {
   return 0;
 };
 
+const text = {
+  sortBy: { eng: "Sort by", fra: "Trier par" },
+  priceAscending: { eng: "Price (low to high)", fra: "Prix (croissant)" },
+  priceDescending: { eng: "Price (high to low)", fra: "Prix (décroissant)" },
+  book: { eng: "Book", fra: "Réserver" },
+};
+
 const sortPriceDescending = (a, b) => {
   if (b.price > a.price) {
     return 1;
@@ -125,7 +132,7 @@ const sortPriceDescending = (a, b) => {
   return 0;
 };
 
-const FlightResults = () => {
+const FlightResults = ({ language }) => {
   const [form] = Form.useForm();
   const [filter] = Form.useForm();
   const [options, setOptions] = useState([]);
@@ -192,6 +199,7 @@ const FlightResults = () => {
           }}
         >
           <FlightForm
+            language={language}
             form={form}
             additionalFields={additionalFields}
             values={useLocation().state}
@@ -259,13 +267,13 @@ const FlightResults = () => {
               form={filter}
               style={{ marginLeft: "20px" }}
             >
-              <Form.Item name="sort" label="Sort By">
+              <Form.Item name="sort" label={text.sortBy[language]}>
                 <Select>
                   <Select.Option value="priceAscending">
-                    Price (low to high)
+                    {text.priceAscending[language]}
                   </Select.Option>
                   <Select.Option value="priceDescending">
-                    Price (high to low)
+                    {text.priceDescending[language]}
                   </Select.Option>
                 </Select>
               </Form.Item>
@@ -276,6 +284,7 @@ const FlightResults = () => {
               dataSource={results}
               renderItem={(flight) => (
                 <Flight
+                  language={language}
                   flight={flight}
                   button={
                     <Button
@@ -286,7 +295,7 @@ const FlightResults = () => {
                         history.push("/book", flight);
                       }}
                     >
-                      Book
+                      {text.book[language]}
                     </Button>
                   }
                 />
