@@ -5,6 +5,7 @@ import {
   faSuitcase,
   faCalendarCheck,
 } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 import Rome from "../images/Rome.jpg";
 import Sydney from "../images/Sydney.jpg";
 import Sandusky from "../images/Sandusky.jpg";
@@ -17,9 +18,20 @@ const { Content } = Layout;
 const { Text } = Typography;
 
 const flights = [
-  { title: "Ottawa → Rome", dates: "Aug. 7 - Aug. 16, 2021", image: Rome },
-  { title: "Ottawa → Sydney", dates: "Sep. 21 - Oct. 3, 2021", image: Sydney },
   {
+    id: "1",
+    title: "Ottawa → Rome",
+    dates: "Aug. 7 - Aug. 16, 2021",
+    image: Rome,
+  },
+  {
+    id: "2",
+    title: "Ottawa → Sydney",
+    dates: "Sep. 21 - Oct. 3, 2021",
+    image: Sydney,
+  },
+  {
+    id: "3",
     title: "Ottawa → Sandusky",
     dates: "May 20 - May 26, 2022",
     image: Sandusky,
@@ -65,32 +77,39 @@ const Bookings = () => {
           grid={{ gutter: 16, column: 4 }}
           dataSource={flights}
           renderItem={(flight) => (
-            <List.Item>
-              <Card
-                cover={
-                  <img alt="logo" src={flight.image} width={270} height={180} />
-                }
-                style={{ width: 270 }}
-              >
-                <Card.Meta
-                  title={<Text>{flight.title}</Text>}
-                  description={
-                    <>
-                      {flight.dates}
-                      <mark
-                        style={{
-                          backgroundColor: "rgba(255, 229, 143, 0.6)",
-                          color: "rgba(0, 0, 0, 0.6)",
-                          marginLeft: "10px",
-                        }}
-                      >
-                        Roundtrip
-                      </mark>
-                    </>
+            <Link to={`/booking/${flight.id}`}>
+              <List.Item>
+                <Card
+                  cover={
+                    <img
+                      alt="logo"
+                      src={flight.image}
+                      width={270}
+                      height={180}
+                    />
                   }
-                ></Card.Meta>
-              </Card>
-            </List.Item>
+                  style={{ width: 270 }}
+                >
+                  <Card.Meta
+                    title={<Text>{flight.title}</Text>}
+                    description={
+                      <>
+                        {flight.dates}
+                        <mark
+                          style={{
+                            backgroundColor: "rgba(255, 229, 143, 0.6)",
+                            color: "rgba(0, 0, 0, 0.6)",
+                            marginLeft: "10px",
+                          }}
+                        >
+                          Roundtrip
+                        </mark>
+                      </>
+                    }
+                  ></Card.Meta>
+                </Card>
+              </List.Item>
+            </Link>
           )}
         />
         <Title level={4} style={{ marginTop: "20px", fontWeight: "normal" }}>
@@ -101,24 +120,26 @@ const Bookings = () => {
           grid={{ gutter: 16, column: 4 }}
           dataSource={vacations}
           renderItem={(vacation) => (
-            <List.Item>
-              <Card
-                cover={
-                  <img
-                    alt="logo"
-                    src={vacation.image}
-                    width={270}
-                    height={180}
-                  />
-                }
-                style={{ width: 270 }}
-              >
-                <Card.Meta
-                  title={<Text>{vacation.title}</Text>}
-                  description={vacation.dates}
-                ></Card.Meta>
-              </Card>
-            </List.Item>
+            <Link to="/">
+              <List.Item>
+                <Card
+                  cover={
+                    <img
+                      alt="logo"
+                      src={vacation.image}
+                      width={270}
+                      height={180}
+                    />
+                  }
+                  style={{ width: 270 }}
+                >
+                  <Card.Meta
+                    title={<Text>{vacation.title}</Text>}
+                    description={vacation.dates}
+                  ></Card.Meta>
+                </Card>
+              </List.Item>
+            </Link>
           )}
         />
       </Content>

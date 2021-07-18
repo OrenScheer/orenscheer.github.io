@@ -6,6 +6,7 @@ import Book from "../pages/Book";
 import Destinations from "../pages/Destinations";
 import DestinationDetails from "../pages/DestinationDetails";
 import Bookings from "../pages/Bookings";
+import BookingDetails from "../pages/BookingDetails";
 
 const Routes = () => {
   return (
@@ -27,6 +28,9 @@ const Routes = () => {
       </Route>
       <Route path="/bookings">
         <Bookings />
+      </Route>
+      <Route path="/booking/:id">
+        <BookingDetails />
       </Route>
       <Route path={["*", "/notfound"]}>
         <NotFound />

@@ -5,6 +5,8 @@ import Routes from "./components/Routes";
 import Logo from "./components/Logo";
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import OrangeCounty from "./images/OrangeCounty.jpg";
+
 import {
   faCalendarCheck,
   faMapMarkerAlt,
@@ -13,26 +15,36 @@ import {
 
 const navs = (location) => {
   if (location.includes("destination")) {
-    return ["destinations"];
+    return "destinations";
   } else if (location.includes("booking")) {
-    return ["bookings"];
+    return "bookings";
   } else if (
     location === "/" ||
     location.includes("flight") ||
     location.includes("book")
   ) {
-    return ["home"];
+    return "home";
   }
-  return [];
+  return null;
 };
+
+const imageNavs = (location) => {
+  if (location === "/") {
+    return "home";
+  }
+};
+
+const backgroundImages = { home: OrangeCounty };
 
 const App = () => {
   const { Header, Content } = Layout;
   const location = useLocation().pathname;
   const [activeNavs, setActiveNavs] = useState();
+  const [backgroundImage, setBackgroundImage] = useState();
 
   useEffect(() => {
-    setActiveNavs(navs(location));
+    setActiveNavs([navs(location)]);
+    setBackgroundImage(backgroundImages[imageNavs(location)]);
   }, [location]);
 
   return (
@@ -85,8 +97,18 @@ const App = () => {
           </Menu.Item>
         </Menu>
       </Header>
-      <Content style={{ padding: "20px 20px" }} theme="light">
-        <div className="site-layout-content">
+      <Content
+        style={{
+          padding: "20px 20px",
+          backgroundImage: `url(${backgroundImage})`,
+          backgroundSize: "cover",
+        }}
+        theme="light"
+      >
+        <div
+          className="site-layout-content"
+          style={{ backgroundColor: backgroundImage ? "" : "white" }}
+        >
           <Routes />
         </div>
       </Content>

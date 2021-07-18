@@ -16,28 +16,26 @@ const Home = () => {
       style={{
         display: "flex",
         alignItems: "center",
-        justifyContent: "space-between",
-        width: "60%",
+        justifyContent: "flex-start",
+        width: "100%",
       }}
     >
-      <div>
+      {/* <div>
         <Button type="primary" style={{ width: "200px", height: "50px" }}>
           Show Top Rated Vacations
         </Button>
       </div>
-      <div style={{ fontSize: "25px" }}>OR</div>
+      <div style={{ fontSize: "25px" }}>OR</div> */}
       <div
         style={{
           width: "400px",
           height: "500px",
           border: "1px solid lightgrey",
+          backgroundColor: "rgba(255,255,255,0.995)",
+          borderRadius: "10px",
         }}
       >
-        <Tabs
-          defaultActiveKey="1"
-          centered
-          style={{ backgroundColor: "white" }}
-        >
+        <Tabs defaultActiveKey="1" centered>
           <TabPane
             tab={
               <span>
@@ -73,6 +71,9 @@ const Home = () => {
           ></TabPane>
         </Tabs>
       </div>
+      {/* <div style={{ marginLeft: "20px" }}>
+        <img src={OrangeCounty} alt="Orange County, CA" height="500px" />
+      </div> */}
     </div>
   );
 };
